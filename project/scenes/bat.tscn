@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://08j8ukpngmn2"]
+
+[ext_resource type="Script" path="res://scripts/bat.gd" id="1_116uj"]
+[ext_resource type="PackedScene" uid="uid://b55tp34hpwak5" path="res://models/bat.blend" id="3_x4a68"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_luvo8"]
+radius = 0.636231
+height = 5.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shsf5"]
+size = Vector3(0.524963, 0.454208, 1.61998)
+
+[node name="Bat" type="CharacterBody3D"]
+script = ExtResource("1_116uj")
+
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 2.5, 0.12)
+shape = SubResource("CapsuleShape3D_luvo8")
+
+[node name="DetectionRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00228854, 0.857566, 0.303334)
+shape = SubResource("BoxShape3D_shsf5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="bat" parent="." instance=ExtResource("3_x4a68")]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://2cu5rpqxgg0c"]
+
+[ext_resource type="Script" path="res://scripts/robot.gd" id="1_ytje0"]
+[ext_resource type="PackedScene" uid="uid://dvbnm14rsi0xr" path="res://scenes/bullet.tscn" id="2_r0uyo"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_xmbmx"]
+[ext_resource type="PackedScene" uid="uid://k4s2351gs2hh" path="res://models/robot.blend" id="4_vl5cr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtgbg"]
+radius = 0.176703
+height = 1.27622
+
+[node name="Robot" type="CharacterBody3D"]
+script = ExtResource("1_ytje0")
+projectile_scene = ExtResource("2_r0uyo")
+
+[node name="CameraOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.986971, 0.309638, 0, -0.160898, 1.89937, 0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraOrigin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50903, 0)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrigin/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+current = true
+fov = 90.0
+script = ExtResource("3_xmbmx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.603643, 0)
+shape = SubResource("CapsuleShape3D_mtgbg")
+
+[node name="Barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00566232, -0.0065195, -1.39628)
+
+[node name="robot" parent="." instance=ExtResource("4_vl5cr")]

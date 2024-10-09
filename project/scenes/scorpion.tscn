@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm3il0xigoa0v"]
+
+[ext_resource type="Script" path="res://scripts/scorpion.gd" id="1_84mqq"]
+[ext_resource type="AudioStream" uid="uid://bs314uq8bs5kp" path="res://audio/sfx/aliens/death.wav" id="2_rgh2r"]
+[ext_resource type="PackedScene" uid="uid://c8geqfrdk5dxh" path="res://models/scorpion.blend" id="3_227mx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_luvo8"]
+radius = 0.4
+height = 3.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shsf5"]
+size = Vector3(0.524963, 0.454208, 1.61998)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5guj4"]
+size = Vector3(2.89618, 5.5636, 3.6748)
+
+[node name="Scorpion" type="CharacterBody3D"]
+script = ExtResource("1_84mqq")
+death_sound = ExtResource("2_rgh2r")
+
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 1.5, 0.12)
+shape = SubResource("CapsuleShape3D_luvo8")
+
+[node name="DetectionRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00228854, 0.857566, 0.303334)
+shape = SubResource("BoxShape3D_shsf5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="scorpion" parent="." instance=ExtResource("3_227mx")]
+
+[node name="Skeleton3D" parent="scorpion/Scorpion" index="0"]
+bones/0/rotation = Quaternion(-0.00140922, 0.707105, 0.707106, 0.00140922)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.651732, 0.27431, -0.27171, 0.65282)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.0201623, -0.034112, -0.860194, 0.508424)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0238438, -0.00864518, -0.15667, 0.987325)
+bones/4/rotation = Quaternion(-0.00160768, 1.47635e-08, 0.00199285, 0.999997)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.65282, -0.27171, 0.27431, 0.651732)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0271406, -0.0146302, 0.156133, 0.987255)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.999778, 0.00199242, 4.19635e-05, 0.0209736)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.322072, 5.92929e-08, -1.31798e-07, 0.946715)
+bones/10/rotation = Quaternion(-0.44356, -1.35745e-07, -2.48805e-07, 0.896245)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.399592, 7.83037e-08, -2.79649e-08, 0.916693)
+bones/14/rotation = Quaternion(-0.706981, 0.0133549, -0.0133549, 0.706981)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="scorpion/Scorpion/Skeleton3D" index="1"]
+transform = Transform3D(-0.999989, -0.00397182, 0.00249878, 0.00452383, -0.674518, 0.738244, -0.0012467, 0.738246, 0.674529, 0.0246557, 9.80973, 3.25283)
+bone_name = "Tail.004"
+bone_idx = 12
+
+[node name="Area3D" type="Area3D" parent="scorpion/Scorpion/Skeleton3D/BoneAttachment3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="scorpion/Scorpion/Skeleton3D/BoneAttachment3D/Area3D"]
+transform = Transform3D(1, -4.64468e-10, -2.67757e-09, 1.25731e-08, 0.999999, 0, -3.61024e-09, -1.49012e-07, 1, -0.219764, 3.05041, -1.34184)
+shape = SubResource("BoxShape3D_5guj4")
+disabled = true
+
+[editable path="scorpion"]

@@ -1,0 +1,71 @@
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b53ti8xixsdop"]
+
+[ext_resource type="FontFile" uid="uid://bbhi83ogv01f4" path="res://fonts/VCR_OSD_MONO_1.001.ttf" id="1_4p3o2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msem1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uafo1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n682u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0lug"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwixm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgk8k"]
+bg_color = Color(0.92549, 0.92549, 0.92549, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2igsk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds24g"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d00ma"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nmml"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ev2v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+default_font = ExtResource("1_4p3o2")
+default_font_size = 22
+Button/colors/font_color = Color(0.521142, 0.52114, 0.52114, 1)
+Button/colors/font_focus_color = Color(0.925353, 0.925353, 0.925353, 1)
+Button/colors/font_hover_color = Color(0.92549, 0.92549, 0.92549, 1)
+Button/colors/font_hover_pressed_color = Color(0.92549, 0.92549, 0.92549, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 0)
+Button/colors/font_pressed_color = Color(0.92549, 0.92549, 0.92549, 1)
+Button/constants/outline_size = 4
+Button/styles/focus = SubResource("StyleBoxFlat_msem1")
+Button/styles/hover = SubResource("StyleBoxFlat_uafo1")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_n682u")
+Button/styles/normal = SubResource("StyleBoxFlat_n0lug")
+Button/styles/pressed = SubResource("StyleBoxFlat_bwixm")
+Button/styles/pressed_mirrored = null
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_mgk8k")
+Label/colors/font_color = Color(0.521569, 0.521569, 0.521569, 1)
+OptionButton/colors/font_hover_color = Color(0.92549, 0.92549, 0.92549, 1)
+OptionButton/styles/disabled = SubResource("StyleBoxFlat_2igsk")
+OptionButton/styles/disabled_mirrored = null
+OptionButton/styles/focus = null
+OptionButton/styles/hover = null
+OptionButton/styles/hover_mirrored = null
+OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_ds24g")
+OptionButton/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_d00ma")
+OptionButton/styles/normal = null
+OptionButton/styles/normal_mirrored = null
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_5nmml")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxFlat_1ev2v")

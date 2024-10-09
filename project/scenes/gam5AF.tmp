@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://khpwg0gdmlrg"]
+
+[ext_resource type="Script" path="res://scripts/robot.gd" id="2_0m1ei"]
+[ext_resource type="Environment" uid="uid://dbyewoecbpunb" path="res://assets/materials/enviroment.tres" id="2_3arpo"]
+[ext_resource type="Material" uid="uid://b2rfilswt7v45" path="res://assets/materials/grass.tres" id="2_5vud3"]
+[ext_resource type="PackedScene" uid="uid://csbvhne3ulilh" path="res://assets/blender/facility.blend" id="4_e6als"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtgbg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q81rs"]
+size = Vector3(2, 0, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dff4j"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nriem"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l155r"]
+data = PackedVector3Array(-6, 7, 2.2628, -12, 7, 12, -6, 7, 12, -6, 7, 2.2628, -12, 7, 2.2628, -12, 7, 12, -6, 0, 12, -12, 7, 12, -12, 0, 12, -6, 0, 12, -6, 7, 12, -12, 7, 12, -12, 2, -2.2628, -12, 7, -12, -12, 0, -12, -12, 2, -2.2628, -12, 7, -2.2628, -12, 7, -12, 0, 0, 2.2628, 7, 0, 12, 0, 0, 12, 0, 0, 2.2628, 12, 0, 2.2628, 7, 0, 12, -6, 0, -12, 0, 7, -12, 0, 0, -12, -6, 0, -12, -6, 7, -12, 0, 7, -12, -2, 2, -2.2628, -12, 2, -2.2628, -6, 2, -2.2628, -2, 2, -2.2628, -12, 2, -2.2628, -12, 2, -2.2628, 12, 7, 2.2628, 0, 7, 12, 7, 7, 12, 12, 7, 2.2628, 0, 7, 2.2628, 0, 7, 12, 7, 7, -12, 0, 7, -2.2628, 12, 7, -2.2628, 7, 7, -12, 0, 7, -12, 0, 7, -2.2628, 12, 7, -2.2628, 0, 7, 2.2628, 12, 7, 2.2628, 12, 7, -2.2628, 0, 7, -2.2628, 0, 7, 2.2628, -6, 0, 12, -12, 2, 12, -6, 2, 12, -6, 0, 12, -12, 0, 12, -12, 2, 12, -2, 2, -2.2628, 0, 0, 2.2628, -2, 2, 2.2628, -2, 2, -2.2628, 0, 0, -2.2628, 0, 0, 2.2628, 0, 0, -12, 12, 0, -2.2628, 0, 0, -2.2628, 0, 0, -12, 7, 0, -12, 12, 0, -2.2628, 0, 0, -2.2628, 12, 0, 2.2628, 0, 0, 2.2628, 0, 0, -2.2628, 12, 0, -2.2628, 12, 0, 2.2628, -12, 0, 12, -12, 7, 2.2628, -12, 2, 2.2628, -12, 0, 12, -12, 7, 12, -12, 7, 2.2628, -12, 2, 2.2628, -12, 7, -2.2628, -12, 2, -2.2628, -12, 2, 2.2628, -12, 7, 2.2628, -12, 7, -2.2628, -6, 7, -12, -12, 7, -2.2628, -6, 7, -2.2628, -6, 7, -12, -12, 7, -12, -12, 7, -2.2628, -6, 7, -2.2628, -12, 7, 2.2628, -6, 7, 2.2628, -6, 7, -2.2628, -12, 7, -2.2628, -12, 7, 2.2628, -6, 2, 2.2628, 0, 2, 12, -6, 2, 12, -6, 2, 2.2628, 0, 2, 2.2628, 0, 2, 12, -6, 2, -12, 0, 2, -2.2628, -6, 2, -2.2628, -6, 2, -12, 0, 2, -12, 0, 2, -2.2628, -6, 0, -12, 0, 2, -12, -6, 2, -12, -6, 0, -12, 0, 0, -12, 0, 2, -12, 0, 0, -12, 0, 2, -2.2628, 0, 2, -12, 0, 0, -12, 0, 0, -2.2628, 0, 2, -2.2628, 0, 0, 2.2628, 0, 2, 12, 0, 2, 2.2628, 0, 0, 2.2628, 0, 0, 12, 0, 2, 12, -2, 2, 2.2628, 0, 2, 2.2628, -6, 2, 2.2628, -2, 2, 2.2628, 0, 0, 2.2628, 0, 2, 2.2628, -12, 0, 12, -12, 2, 2.2628, -12, 2, 12, -12, 0, 12, -12, 2, 2.2628, -12, 2, 2.2628, -12, 2, -2.2628, -12, 2, -12, -12, 2, -2.2628, -12, 2, -2.2628, -12, 0, -12, -12, 2, -12, -12, 2, 2.2628, -6, 2, 2.2628, -12, 2, 2.2628, -12, 2, 2.2628, -2, 2, 2.2628, -6, 2, 2.2628, -12, 0, -12, -6, 2, -12, -12, 2, -12, -12, 0, -12, -6, 0, -12, -6, 2, -12, -12, 2, -12, -6, 2, -2.2628, -12, 2, -2.2628, -12, 2, -12, -6, 2, -12, -6, 2, -2.2628, -12, 2, 2.2628, -6, 2, 12, -12, 2, 12, -12, 2, 2.2628, -6, 2, 2.2628, -6, 2, 12, 0, 7, -2.2628, -6, 7, 2.2628, 0, 7, 2.2628, 0, 7, -2.2628, -6, 7, -2.2628, -6, 7, 2.2628, 0, 7, -12, -6, 7, -2.2628, 0, 7, -2.2628, 0, 7, -12, -6, 7, -12, -6, 7, -2.2628, -12, 2, -2.2628, -2, 2, 2.2628, -12, 2, 2.2628, -12, 2, -2.2628, -2, 2, -2.2628, -2, 2, 2.2628, 0, 0, 12, -6, 2, 12, 0, 2, 12, 0, 0, 12, -6, 0, 12, -6, 2, 12, 0, 0, -2.2628, -2, 2, -2.2628, 0, 2, -2.2628, 0, 2, -2.2628, -2, 2, -2.2628, -6, 2, -2.2628, -12, 0, -12, -6, 7, -12, -6, 0, -12, -12, 0, -12, -12, 7, -12, -6, 7, -12, 0, 0, 12, -6, 7, 12, -6, 0, 12, 0, 0, 12, 0, 7, 12, -6, 7, 12, 0, 7, 2.2628, -6, 7, 12, 0, 7, 12, 0, 7, 2.2628, -6, 7, 2.2628, -6, 7, 12, 12, 7, -2.2628, 15.5583, 0, -4.0899, 15.5583, 7, -4.0899, 12, 7, -2.2628, 12, 0, -2.2628, 15.5583, 0, -4.0899, 12, 7, -2.2628, 12, 0, 2.2628, 12, 0, -2.2628, 12, 7, -2.2628, 12, 7, 2.2628, 12, 0, 2.2628, 12, 0, 2.2628, 15.5583, 7, 4.0899, 15.5583, 0, 4.0899, 12, 0, 2.2628, 12, 7, 2.2628, 15.5583, 7, 4.0899, 10.5583, 0, -13.8272, 15.5583, 7, -4.0899, 15.5583, 0, -4.0899, 10.5583, 0, -13.8272, 10.5583, 7, -13.8272, 15.5583, 7, -4.0899, 7, 0, -12, 10.5583, 7, -13.8272, 10.5583, 0, -13.8272, 7, 0, -12, 7, 7, -12, 10.5583, 7, -13.8272, 7, 7, -12, 15.5583, 7, -4.0899, 10.5583, 7, -13.8272, 7, 7, -12, 12, 7, -2.2628, 15.5583, 7, -4.0899, 10.5583, 0, 13.8272, 15.5583, 7, 4.0899, 10.5583, 7, 13.8272, 10.5583, 0, 13.8272, 15.5583, 0, 4.0899, 15.5583, 7, 4.0899, 7, 7, 12, 10.5583, 0, 13.8272, 10.5583, 7, 13.8272, 7, 7, 12, 7, 0, 12, 10.5583, 0, 13.8272, 7, 0, 12, 15.5583, 0, 4.0899, 10.5583, 0, 13.8272, 7, 0, 12, 12, 0, 2.2628, 15.5583, 0, 4.0899, 7, 0, -12, 15.5583, 0, -4.0899, 12, 0, -2.2628, 7, 0, -12, 10.5583, 0, -13.8272, 15.5583, 0, -4.0899, 7, 7, 12, 15.5583, 7, 4.0899, 12, 7, 2.2628, 7, 7, 12, 10.5583, 7, 13.8272, 15.5583, 7, 4.0899, 7, 0, 12, 1.3671, 0, 12, 0, 0, 12, 7, 0, 12, 3.8871, 0, 12, 1.3671, 0, 12, 0, 0, 12, 7, 7, 12, 0, 7, 12, 7, 7, 12, 3.8871, 0, 12, 7, 0, 12, 1.3671, 0, 12, 7, 7, 12, 0, 0, 12, 7, 7, 12, 1.3671, 0, 12, 3.8871, 0, 12, 7, 0, -12, 0, 7, -12, 7, 7, -12, 0, 7, -12, 1.3577, 0, -12, 0, 0, -12, 3.8691, 0, -12, 0, 7, -12, 7, 0, -12, 0, 7, -12, 3.8691, 0, -12, 1.3577, 0, -12, 0, 0, -12, 3.8691, 0, -12, 7, 0, -12, 0, 0, -12, 1.3577, 0, -12, 3.8691, 0, -12)
+
+[node name="Game" type="Node3D"]
+
+[node name="Sky" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_3arpo")
+
+[node name="Exterior" type="Node3D" parent="."]
+
+[node name="Robot" type="CharacterBody3D" parent="Exterior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.380647, 3.26423, 0.157264)
+script = ExtResource("2_0m1ei")
+
+[node name="Camera3D" type="Camera3D" parent="Exterior/Robot"]
+fov = 90.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exterior/Robot"]
+shape = SubResource("CapsuleShape3D_mtgbg")
+
+[node name="Barrel" type="Node3D" parent="Exterior/Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00566232, -0.0065195, -1.39628)
+
+[node name="Area3D" type="Area3D" parent="Exterior/Robot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exterior/Robot/Area3D"]
+shape = SubResource("CapsuleShape3D_mtgbg")
+disabled = true
+
+[node name="Ground" type="Node3D" parent="Exterior"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Exterior/Ground"]
+transform = Transform3D(500, 0, 0, 0, 1, 0, 0, 0, 500, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exterior/Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_q81rs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Exterior/Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00933838, 0, -0.000732422)
+material_override = ExtResource("2_5vud3")
+mesh = SubResource("PlaneMesh_dff4j")
+skeleton = NodePath("../..")
+
+[node name="Interior" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66324, -8.67628, 0)
+
+[node name="Human" type="CharacterBody3D" parent="Interior"]
+
+[node name="Camera3D" type="Camera3D" parent="Interior/Human"]
+fov = 90.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/Human"]
+shape = SubResource("CapsuleShape3D_nriem")
+
+[node name="facility" parent="Interior" instance=ExtResource("4_e6als")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.66324, -1.51142, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Interior/facility"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Interior/facility/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_l155r")

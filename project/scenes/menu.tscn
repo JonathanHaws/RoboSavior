@@ -1,0 +1,183 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceqrl68dmbr0s"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_klscs"]
+[ext_resource type="Theme" uid="uid://b53ti8xixsdop" path="res://resources/themes/menu.tres" id="2_sehps"]
+[ext_resource type="AudioStream" uid="uid://chpabnup7yfds" path="res://audio/sfx/menu/hover.wav" id="2_vn3cn"]
+[ext_resource type="AudioStream" uid="uid://seyx463wydpp" path="res://audio/sfx/menu/pressed.wav" id="3_c0w6l"]
+
+[node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "options_menu", "controls_menu", "credits_menu", "hover_sound_player", "pressed_sound_player")]
+process_mode = 3
+script = ExtResource("1_klscs")
+main_menu = NodePath("MarginContainer/CenterContainer/Main")
+options_menu = NodePath("MarginContainer/CenterContainer/Options")
+controls_menu = NodePath("MarginContainer/CenterContainer/Controls")
+credits_menu = NodePath("MarginContainer/CenterContainer/Credits")
+hover_sound_player = NodePath("")
+pressed_sound_player = NodePath("")
+hover_sound = ExtResource("2_vn3cn")
+pressed_sound = ExtResource("3_c0w6l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.05, 0.05, 0.05, 0.913725)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_sehps")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(776.325, 258.91)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_colors/font_outline_color = Color(0.521569, 0.521569, 0.521569, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]ROBOSAVIOR[/center]
+
+"
+fit_content = true
+
+[node name="Main" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="MarginContainer/CenterContainer/Main"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="Restart" type="Button" parent="MarginContainer/CenterContainer/Main"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="Options" type="Button" parent="MarginContainer/CenterContainer/Main"]
+layout_mode = 2
+text = "OPTIONS
+"
+
+[node name="Controls" type="Button" parent="MarginContainer/CenterContainer/Main"]
+layout_mode = 2
+text = "CONTROLS"
+
+[node name="Credits" type="Button" parent="MarginContainer/CenterContainer/Main"]
+layout_mode = 2
+text = "CREDITS
+"
+
+[node name="Quit" type="Button" parent="MarginContainer/CenterContainer/Main"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "QUIT"
+
+[node name="Options" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Master" type="HBoxContainer" parent="MarginContainer/CenterContainer/Options"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/Options/Master"]
+layout_mode = 2
+text = "MASTER "
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="MarginContainer/CenterContainer/Options/Master"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="Music" type="HBoxContainer" parent="MarginContainer/CenterContainer/Options"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/Options/Music"]
+layout_mode = 2
+text = "MUSIC "
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="MarginContainer/CenterContainer/Options/Music"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="Sfx" type="HBoxContainer" parent="MarginContainer/CenterContainer/Options"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/Options/Sfx"]
+layout_mode = 2
+text = "SFX "
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="MarginContainer/CenterContainer/Options/Sfx"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="Display" type="OptionButton" parent="MarginContainer/CenterContainer/Options"]
+layout_mode = 2
+alignment = 1
+icon_alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "FULLSCREN"
+popup/item_1/text = "WINDOWED"
+popup/item_1/id = 1
+
+[node name="Back" type="Button" parent="MarginContainer/CenterContainer/Options"]
+layout_mode = 2
+text = "BACK"
+
+[node name="Controls" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/CenterContainer/Controls"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center] 
+[color=#ececec]WASD / ARROWS / Mouse [/color][color=#858585]- Move [/color]
+[color=#ececec]Tab / Other Keys  [/color][color=#858585]- Pilot Mech [/color]
+[color=#ececec]Click [/color][color=#858585]- Repair Internal Damage Or Attack [/color]
+[/center] "
+fit_content = true
+tab_size = 1
+
+[node name="Back" type="Button" parent="MarginContainer/CenterContainer/Controls"]
+layout_mode = 2
+text = "BACK"
+
+[node name="Credits" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/CenterContainer/Credits"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "
+[center] 
+[color=#ececec] Wild Fireflies[/color][color=#858585]- 2024 GMTK Jam \"Built To Scale\" Entry Fork  [/color]
+[color=#ececec]FantaLaTone [/color][color=#858585]- Progamming / Modeling / Godot 4.3 [/color]
+[color=#ececec]MiguelAngel0 [/color][color=#858585]- Music / Sound Effects  / Cubase [/color]
+[color=#ececec]Asuriダ [/color][color=#858585]- Modeling / Animation/ Blender 4.1  [/color]
+[color=#ececec]Nemo [/color][color=#858585]- Texturing / Programming / Procreate  [/color]
+[/center]"
+fit_content = true
+
+[node name="Back" type="Button" parent="MarginContainer/CenterContainer/Credits"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "BACK"

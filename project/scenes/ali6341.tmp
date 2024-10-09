@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq3x6tewy6tar"]
+
+[ext_resource type="Script" path="res://scripts/alien.gd" id="1_1bbbo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_govut"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0yt4j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwxa2"]
+size = Vector3(0.796631, 1, 1)
+
+[node name="alien" type="CharacterBody3D"]
+transform = Transform3D(0.999993, -0.00366518, 0, 0.00366518, 0.999993, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_1bbbo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_govut")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0yt4j")
+
+[node name="AttackArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0138642, 0, -0.416566)
+shape = SubResource("BoxShape3D_lwxa2")

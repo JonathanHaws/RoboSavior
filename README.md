@@ -1,5 +1,3 @@
 # ROBO-SAVIOR
 
-Play [here!](https://fantalatone.itch.io/robo-savior) A game made for the 2024 GMTK Game Jam
-
-Wild Fireflies / FantaLaTone / MiguelAngel0 / Nemo / Asuriダ / Godot 4.3 / Blender 4.1
+Pilot a powerful robot to defend a city from an alien invasion. As waves of enemies attack, you must balance intense combat with crucial internal repairs to keep your robot operational. Balance two scales: on a human scale to repair the robot and on a gigantic scale in the battles between the alien invaders.  Made for 2024 GMTK Game Jam with prompt "Built To Scale". FantaLaTone  / Miguel Coronado  / Nemo  / Afonso Silva

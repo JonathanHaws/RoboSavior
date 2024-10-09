@@ -1,0 +1,229 @@
+[gd_scene load_steps=18 format=3 uid="uid://criefxkm6t2vk"]
+
+[ext_resource type="Script" path="res://scripts/human.gd" id="1_30bev"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_c2bl4"]
+[ext_resource type="AudioStream" uid="uid://ca0c8b8yd2kv0" path="res://audio/sfx/human/footstep_2.wav" id="2_swudg"]
+[ext_resource type="PackedScene" uid="uid://c2egmhc6ib68m" path="res://models/hammer.blend" id="2_w483i"]
+[ext_resource type="AudioStream" uid="uid://daivwafext21a" path="res://audio/sfx/human/footstep_1.wav" id="3_187g7"]
+[ext_resource type="PackedScene" uid="uid://ddu05rvcyg4cw" path="res://models/blowtorch.blend" id="3_ovr42"]
+[ext_resource type="AudioStream" uid="uid://milmujqft04w" path="res://audio/sfx/human/footstep_4.wav" id="4_ke56g"]
+[ext_resource type="PackedScene" uid="uid://bklj33trl26r0" path="res://models/drill.blend" id="4_wx5q6"]
+[ext_resource type="AudioStream" uid="uid://mul5djvchfge" path="res://audio/sfx/human/footstep_3.wav" id="5_66hud"]
+[ext_resource type="AudioStream" uid="uid://dcjj52us2dufm" path="res://audio/sfx/human/jump.wav" id="6_x3pph"]
+
+[sub_resource type="Animation" id="Animation_6gvh8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hammer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drill:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blowtorch:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5agls"]
+resource_name = "blowtorch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drill:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hammer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blowtorch:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pq60x"]
+resource_name = "drill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drill:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hammer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blowtorch:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i0gfe"]
+resource_name = "hammer"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drill:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hammer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blowtorch:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t4bpe"]
+_data = {
+"RESET": SubResource("Animation_6gvh8"),
+"blowtorch": SubResource("Animation_5agls"),
+"drill": SubResource("Animation_pq60x"),
+"hammer": SubResource("Animation_i0gfe")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e5qc7"]
+size = Vector3(0.467896, 0.414307, 2.22607)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yli5g"]
+
+[node name="Human" type="CharacterBody3D"]
+script = ExtResource("1_30bev")
+footstep_sounds = Array[AudioStream]([ExtResource("2_swudg"), ExtResource("3_187g7"), ExtResource("4_ke56g"), ExtResource("5_66hud")])
+jump_sound = ExtResource("6_x3pph")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Camera3D/Items")
+libraries = {
+"": SubResource("AnimationLibrary_t4bpe")
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+fov = 90.0
+script = ExtResource("2_c2bl4")
+
+[node name="Reach" type="Area3D" parent="Camera3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Reach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00152588, -0.0452881, -1.61499)
+shape = SubResource("BoxShape3D_e5qc7")
+
+[node name="Items" type="Node3D" parent="Camera3D"]
+transform = Transform3D(0.275259, 0, 0.112539, 0, 0.297376, 0, -0.112539, 0, 0.275259, 0.150257, -0.175661, -0.164029)
+
+[node name="drill" parent="Camera3D/Items" instance=ExtResource("4_wx5q6")]
+visible = false
+
+[node name="Drill" parent="Camera3D/Items/drill" index="0"]
+layers = 2
+
+[node name="hammer" parent="Camera3D/Items" instance=ExtResource("2_w483i")]
+
+[node name="Hammer" parent="Camera3D/Items/hammer" index="0"]
+layers = 2
+
+[node name="blowtorch" parent="Camera3D/Items" instance=ExtResource("3_ovr42")]
+visible = false
+
+[node name="Blowtorch" parent="Camera3D/Items/blowtorch" index="0"]
+layers = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_yli5g")
+
+[editable path="Camera3D/Items/drill"]
+[editable path="Camera3D/Items/hammer"]
+[editable path="Camera3D/Items/blowtorch"]

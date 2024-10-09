@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://criefxkm6t2vk"]
+
+[ext_resource type="Script" path="res://scripts/human.gd" id="1_30bev"]
+[ext_resource type="AudioStream" uid="uid://p0okbp80d2pt" path="res://audio/SFX/Footstep_1.wav" id="2_auwqa"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_c2bl4"]
+[ext_resource type="PackedScene" uid="uid://c2egmhc6ib68m" path="res://models/hammer.blend" id="2_w483i"]
+[ext_resource type="PackedScene" uid="uid://ddu05rvcyg4cw" path="res://models/blowtorch.blend" id="3_ovr42"]
+[ext_resource type="AudioStream" uid="uid://cbkauvd46kyo3" path="res://audio/SFX/Footstep_2.wav" id="3_yghfy"]
+[ext_resource type="AudioStream" uid="uid://cjlaqxkpg7tos" path="res://audio/SFX/Footstep_3.wav" id="4_oiubg"]
+[ext_resource type="PackedScene" uid="uid://bklj33trl26r0" path="res://models/drill.blend" id="4_wx5q6"]
+[ext_resource type="AudioStream" uid="uid://c8kfq0ep171h5" path="res://audio/SFX/Footstep_4.wav" id="5_yaxf4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yli5g"]
+
+[node name="Human" type="CharacterBody3D"]
+script = ExtResource("1_30bev")
+footstep_sounds = Array[AudioStream]([ExtResource("2_auwqa"), ExtResource("3_yghfy"), ExtResource("4_oiubg"), ExtResource("5_yaxf4")])
+
+[node name="Camera3D" type="Camera3D" parent="."]
+fov = 90.0
+script = ExtResource("2_c2bl4")
+
+[node name="Items" type="Node3D" parent="Camera3D"]
+transform = Transform3D(0.275259, 0, 0.112539, 0, 0.297376, 0, -0.112539, 0, 0.275259, 0.150257, -0.175661, -0.164029)
+
+[node name="hammer" parent="Camera3D/Items" instance=ExtResource("2_w483i")]
+
+[node name="Hammer" parent="Camera3D/Items/hammer" index="0"]
+layers = 2
+
+[node name="blowtorch" parent="Camera3D/Items" instance=ExtResource("3_ovr42")]
+visible = false
+
+[node name="Blowtorch" parent="Camera3D/Items/blowtorch" index="0"]
+layers = 2
+
+[node name="drill" parent="Camera3D/Items" instance=ExtResource("4_wx5q6")]
+visible = false
+
+[node name="Drill" parent="Camera3D/Items/drill" index="0"]
+layers = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_yli5g")
+
+[editable path="Camera3D/Items/hammer"]
+[editable path="Camera3D/Items/blowtorch"]
+[editable path="Camera3D/Items/drill"]

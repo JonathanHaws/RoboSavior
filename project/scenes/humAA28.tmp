@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://criefxkm6t2vk"]
+
+[ext_resource type="Script" path="res://scripts/human.gd" id="1_30bev"]
+[ext_resource type="PackedScene" uid="uid://c2egmhc6ib68m" path="res://models/hammer.blend" id="2_w483i"]
+[ext_resource type="PackedScene" uid="uid://ddu05rvcyg4cw" path="res://models/blowtorch.blend" id="3_ovr42"]
+[ext_resource type="PackedScene" uid="uid://bklj33trl26r0" path="res://models/drill.blend" id="4_wx5q6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yli5g"]
+
+[node name="Human" type="CharacterBody3D"]
+script = ExtResource("1_30bev")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+fov = 90.0
+
+[node name="Items" type="Node3D" parent="Camera3D"]
+transform = Transform3D(0.275259, 0, 0.112539, 0, 0.297376, 0, -0.112539, 0, 0.275259, 0.150257, -0.175661, -0.164029)
+
+[node name="hammer" parent="Camera3D/Items" instance=ExtResource("2_w483i")]
+
+[node name="blowtorch" parent="Camera3D/Items" instance=ExtResource("3_ovr42")]
+visible = false
+
+[node name="drill" parent="Camera3D/Items" instance=ExtResource("4_wx5q6")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_yli5g")

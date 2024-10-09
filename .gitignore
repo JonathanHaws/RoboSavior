@@ -1,4 +1,1 @@
-gmtk2024/.godot/ 
-*.import         
-build/*         
-!build/          
+project/.godot/   

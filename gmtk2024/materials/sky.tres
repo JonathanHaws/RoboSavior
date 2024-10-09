@@ -1,9 +1,0 @@
-[gd_resource type="Sky" load_steps=3 format=3 uid="uid://dhugtfnbhan6d"]
-
-[ext_resource type="Texture2D" uid="uid://dh4p0ru8eaye0" path="res://materials/sky.png" id="1_wp8wb"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5v77j"]
-panorama = ExtResource("1_wp8wb")
-
-[resource]
-sky_material = SubResource("PanoramaSkyMaterial_5v77j")
