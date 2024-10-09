@@ -10,13 +10,13 @@ extends CharacterBody3D
 @onready var camera = $Pivot/SpringArm3D/Camera3D
 @onready var anim_player = $Mesh/AnimationPlayer
 @onready var attack = $Mesh/Armature/Skeleton3D/BoneAttachment3D/Area3D
-var health = 0;
 var mouse_delta = Vector2.ZERO # Only update oretientation in physics process so spring arm can collide correctly
+var health = 0;
 
 func _ready():
 	anim_player.play("Intro", 0.5, 1.0, false)
 	attack.connect("body_entered", Callable(self, "_on_attack_entered"))
-
+	
 func _input(event): # LOOK
 	if event is InputEventMouseMotion and camera.current :
 		mouse_delta += event.relative
@@ -71,7 +71,6 @@ func _physics_process(delta):
 	
 	velocity.y += gravity * delta 
 	move_and_slide()
-	print(health)
 
 func _on_attack_entered(body):	
 	if body != self:

@@ -9,7 +9,7 @@ radius = 0.4
 height = 3.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_shsf5"]
-size = Vector3(0.524963, 0.454208, 1.61998)
+size = Vector3(0.524963, 0.454208, 1.70562)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5guj4"]
 size = Vector3(2.89618, 5.5636, 3.6748)
@@ -25,7 +25,7 @@ shape = SubResource("CapsuleShape3D_luvo8")
 [node name="DetectionRange" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00228854, 0.857566, 0.303334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00228854, 0.857566, 0.346154)
 shape = SubResource("BoxShape3D_shsf5")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -56,7 +56,7 @@ bones/11/rotation = Quaternion(-0.399592, 7.83037e-08, -2.79649e-08, 0.916693)
 bones/14/rotation = Quaternion(-0.706981, 0.0133549, -0.0133549, 0.706981)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="scorpion/Scorpion/Skeleton3D" index="1"]
-transform = Transform3D(-0.999989, -0.00397182, 0.00249878, 0.00452383, -0.674518, 0.738244, -0.0012467, 0.738246, 0.674529, 0.0246557, 9.80973, 3.25283)
+transform = Transform3D(-1, -1.96641e-07, -5.12034e-07, -3.83427e-07, -0.416078, 0.909329, -3.9214e-07, 0.909328, 0.416078, 0.00161939, 11.6104, -5.7384)
 bone_name = "Tail.004"
 bone_idx = 12
 
