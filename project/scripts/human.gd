@@ -25,7 +25,7 @@ func _input(event): # LOOK
 		mouse_delta += event.relative
 
 func _physics_process(delta):
-	if robot and not robot.camera.current:
+	if robot and camera.current:
 		
 		if mouse_delta.length() > 0: # Look
 			rotate_y(-mouse_delta.x * sensitivity)  # Horizontal look (yaw)

@@ -27,8 +27,9 @@ spring_length = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="Pivot/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+rotation_edit_mode = 1
 current = true
-fov = 100.0
+fov = 90.0
 script = ExtResource("3_xmbmx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -49,7 +50,7 @@ bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.000422131, 1, 0.000319824, -1, 0.000422127, 9.05286e-06, 8.91785e-06, -0.000319828, 1, 0.315789, 1.01373, 0.000674709)
+transform = Transform3D(-0.998396, 0.0383861, -0.0416219, -0.0423822, -0.994103, 0.0998116, -0.037545, 0.101416, 0.994135, 0.244426, 0.883458, 0.0651852)
 bone_name = "arm_l"
 bone_idx = 6
 
@@ -67,14 +68,6 @@ playback_auto_capture = false
 
 [node name="Barrel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00566232, -0.0065195, -1.39628)
-
-[node name="Fade" type="CanvasLayer" parent="."]
-layer = -100
-
-[node name="ColorRect" type="ColorRect" parent="Fade"]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"

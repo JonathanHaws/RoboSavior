@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var faults : Node
 @export var footstep_sounds: Array[AudioStream] 
 @export var break_sounds: Array[AudioStream]  
+@export var cinematic: AnimationPlayer
 @onready var camera = $Pivot/SpringArm3D/Camera3D
 @onready var anim_player = $Mesh/AnimationPlayer
 @onready var attack = $Mesh/Armature/Skeleton3D/BoneAttachment3D/Area3D
@@ -14,7 +15,6 @@ var mouse_delta = Vector2.ZERO # Only update oretientation in physics process so
 var health = 0;
 
 func _ready():
-	anim_player.play("Intro", 0.5, 1.0, false)
 	attack.connect("body_entered", Callable(self, "_on_attack_entered"))
 	
 func _input(event): # LOOK
@@ -87,7 +87,7 @@ func take_damage(_amount: float) -> void:
 			health -= 1;	
 			return;
 	if health < 1:
-		anim_player.play("Defeat", 0.2, 1.0, false)
+		cinematic.play("Defeat", 0.2, 1.0, false)
 
 func play_footstep():
 	if footstep_sounds.size() > 0:
@@ -98,6 +98,3 @@ func play_footstep():
 		footstep_audio.bus = "SFX" 
 		footstep_audio.play()
 		footstep_audio.connect("finished", Callable(footstep_audio, "queue_free"))
-
-func restart_game():
-	get_tree().reload_current_scene()
