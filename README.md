@@ -1,3 +1,2 @@
-# ROBO-SAVIOR
-Pilot a powerful robot to defend a city from an alien invasion. As waves of enemies attack, you must balance intense combat with crucial internal repairs to keep your robot operational. 
-[Play Here](https://jonathanhaws.itch.io/robosavior) FantaLaTone  / Miguel Coronado  / Nemo  / Afonso Silva
+![Splash](https://github.com/user-attachments/assets/0323b57c-620f-49ca-ab41-a117e89b7c0c)
+[Play Here](https://jonathanhaws.itch.io/robosavior) / FantaLaTone  / Miguel Coronado  / Nemo  / Afonso Silva
