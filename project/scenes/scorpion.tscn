@@ -5,27 +5,26 @@
 [ext_resource type="PackedScene" uid="uid://c8geqfrdk5dxh" path="res://models/scorpion.blend" id="3_227mx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_luvo8"]
-radius = 0.4
-height = 3.0
+radius = 0.25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_shsf5"]
-size = Vector3(0.524963, 0.454208, 1.70562)
+size = Vector3(1.60382, 0.912109, 1.92517)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5guj4"]
-size = Vector3(2.89618, 5.5636, 3.6748)
+size = Vector3(2.50879, 5, 3.6748)
 
 [node name="Scorpion" type="CharacterBody3D"]
 script = ExtResource("1_84mqq")
 death_sound = ExtResource("2_rgh2r")
 
 [node name="Body" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 1.5, 0.12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 1, 0.12)
 shape = SubResource("CapsuleShape3D_luvo8")
 
 [node name="DetectionRange" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00228854, 0.857566, 0.346154)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0195525, 0.857566, 0.0455559)
 shape = SubResource("BoxShape3D_shsf5")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -37,33 +36,33 @@ bones/0/rotation = Quaternion(-0.00140922, 0.707105, 0.707106, 0.00140922)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(0.651732, 0.27431, -0.27171, 0.65282)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.0201623, -0.034112, -0.860194, 0.508424)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(-0.0238438, -0.00864518, -0.15667, 0.987325)
-bones/4/rotation = Quaternion(-0.00160768, 1.47635e-08, 0.00199285, 0.999997)
+bones/2/rotation = Quaternion(0.0201623, -0.0341119, -0.860194, 0.508425)
+bones/3/rotation = Quaternion(-0.0238438, -0.00864522, -0.15667, 0.987325)
+bones/4/rotation = Quaternion(-0.00160768, -6.1804e-08, 0.00199285, 0.999997)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.65282, -0.27171, 0.27431, 0.651732)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.000953768, 0.0454536, 0.86043, 0.507536)
 bones/7/rotation = Quaternion(-0.0271406, -0.0146302, 0.156133, 0.987255)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(0.999778, 0.00199242, 4.19635e-05, 0.0209736)
+bones/8/rotation = Quaternion(0.999778, 0.00199243, 4.19486e-05, 0.0209736)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(-0.322072, 5.92929e-08, -1.31798e-07, 0.946715)
-bones/10/rotation = Quaternion(-0.44356, -1.35745e-07, -2.48805e-07, 0.896245)
+bones/9/rotation = Quaternion(-0.322072, 2.96661e-08, -1.11351e-07, 0.946715)
+bones/10/rotation = Quaternion(-0.44356, -4.22797e-08, -2.54375e-07, 0.896245)
 bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(-0.399592, 7.83037e-08, -2.79649e-08, 0.916693)
+bones/11/rotation = Quaternion(-0.399592, 4.54396e-08, -6.03285e-08, 0.916693)
+bones/13/rotation = Quaternion(-0.706963, -0.0142369, 0.0142369, 0.706964)
 bones/14/rotation = Quaternion(-0.706981, 0.0133549, -0.0133549, 0.706981)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="scorpion/Scorpion/Skeleton3D" index="1"]
-transform = Transform3D(-1, -1.96641e-07, -5.12034e-07, -3.83427e-07, -0.416078, 0.909329, -3.9214e-07, 0.909328, 0.416078, 0.00161939, 11.6104, -5.7384)
+transform = Transform3D(-1, -1.85138e-07, -6.69006e-07, -5.31372e-07, -0.416077, 0.90933, -4.46205e-07, 0.909329, 0.416077, 0.00161934, 11.6104, -5.73841)
 bone_name = "Tail.004"
 bone_idx = 12
 
 [node name="Area3D" type="Area3D" parent="scorpion/Scorpion/Skeleton3D/BoneAttachment3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="scorpion/Scorpion/Skeleton3D/BoneAttachment3D/Area3D"]
-transform = Transform3D(1, -4.64468e-10, -2.67757e-09, 1.25731e-08, 0.999999, 0, -3.61024e-09, -1.49012e-07, 1, -0.219764, 3.05041, -1.34184)
+transform = Transform3D(1, -4.64382e-10, -2.68145e-09, 1.25733e-08, 0.999999, -2.38419e-07, -3.61011e-09, -1.78814e-07, 0.999999, -0.0260685, 2.76861, -1.34184)
 shape = SubResource("BoxShape3D_5guj4")
 disabled = true
 

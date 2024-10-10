@@ -10,7 +10,7 @@ extends CharacterBody3D
 @onready var detection_range = $DetectionRange
 @onready var nav_agent = $NavigationAgent3D
 var in_range = false
-var health = 1
+var health = 3
 
 func _ready():
 	detection_range.connect("body_entered", Callable(self, "_on_body_entered"))
@@ -22,17 +22,19 @@ func _on_body_entered(body): if body == robot: in_range = true
 
 func _on_body_exited(body): if body == robot: in_range = false
 
-func point_towards_robot():
-	if robot and robot.is_inside_tree():
-		var direction = (robot.global_transform.origin - global_transform.origin).normalized()
-		rotation.y = atan2(direction.x, direction.z) 
-	
+func point_towards_robot(interpolation_speed: float = 1.0):
+	var direction = (robot.global_transform.origin - global_transform.origin).normalized()
+	var target_y_rotation = atan2(direction.x, direction.z)
+	rotation.y = lerp_angle(rotation.y, target_y_rotation, interpolation_speed)
+	return abs(rotation.y - target_y_rotation) # returns remaining amount needed to directly face the player
+
 func _physics_process(delta):
 	if in_range:
 		velocity.x = 0
 		velocity.z = 0
-		point_towards_robot()
-		anim_player.play("ATTACK", 0.2, 1.0, false)
+		if anim_player.current_animation != "ATTACK" :
+			if point_towards_robot(0.1) < 0.1: # only attacks when fully facing player
+				anim_player.play("ATTACK", 0.2, 1.0, false) 
 		
 	elif anim_player.current_animation != "ATTACK":
 		if NavigationServer3D.map_get_iteration_id(nav_agent.get_navigation_map()) > 0:
@@ -59,11 +61,11 @@ func _on_attack_entered(body):
 		
 func take_damage(amount: float) -> void:
 	health -= amount
+	robot.camera.shake = 3; 
 	if health <= 0: 
 		var explosion = explosion_scene.instantiate()
 		explosion.global_transform = global_transform
 		get_tree().current_scene.add_child(explosion) 
-		robot.camera.shake = 3; 
 		
 		var death_audio = AudioStreamPlayer3D.new(); 
 		death_audio.stream = death_sound; 

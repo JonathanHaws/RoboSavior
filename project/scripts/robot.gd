@@ -15,7 +15,7 @@ var mouse_delta = Vector2.ZERO # Only update oretientation in physics process so
 var health = 0;
 
 func _ready():
-	attack.connect("body_entered", Callable(self, "_on_attack_entered"))
+	attack.connect("area_entered", Callable(self, "_on_attack_entered"))
 	
 func _input(event): # LOOK
 	if event is InputEventMouseMotion and camera.current :
@@ -75,6 +75,8 @@ func _physics_process(delta):
 func _on_attack_entered(body):	
 	if body != self:
 		if body.has_method("take_damage"): body.take_damage(1)			
+		elif body.get_parent() and body.get_parent().has_method("take_damage"): #bandaid fix to make scorpion detection range count as hitbox
+			body.get_parent().take_damage(1)
 
 func take_damage(_amount: float) -> void:
 	var faults_shuffled = faults.get_children()
