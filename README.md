@@ -1,3 +1,3 @@
 # ROBO-SAVIOR
-
-Pilot a powerful robot to defend a city from an alien invasion. As waves of enemies attack, you must balance intense combat with crucial internal repairs to keep your robot operational. Balance two scales: on a human scale to repair the robot and on a gigantic scale in the battles between the alien invaders.  Made for 2024 GMTK Game Jam with prompt "Built To Scale". FantaLaTone  / Miguel Coronado  / Nemo  / Afonso Silva
+Pilot a powerful robot to defend a city from an alien invasion. As waves of enemies attack, you must balance intense combat with crucial internal repairs to keep your robot operational. 
+[Play Here]([https://example.com](https://jonathanhaws.itch.io/robosavior)) FantaLaTone  / Miguel Coronado  / Nemo  / Afonso Silva
