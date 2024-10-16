@@ -1,5 +1,5 @@
 extends CharacterBody3D
-@export var speed = 4.0
+@export var speed = 2.0
 @export var explosion_scene : PackedScene
 @export var robot : Node
 @export var human : Node

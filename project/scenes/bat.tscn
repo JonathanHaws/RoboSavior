@@ -1,28 +1,123 @@
-[gd_scene load_steps=5 format=3 uid="uid://08j8ukpngmn2"]
+[gd_scene load_steps=9 format=3 uid="uid://08j8ukpngmn2"]
 
 [ext_resource type="Script" path="res://scripts/bat.gd" id="1_116uj"]
 [ext_resource type="PackedScene" uid="uid://b55tp34hpwak5" path="res://models/bat.blend" id="3_x4a68"]
 
+[sub_resource type="Animation" id="Animation_e8hi8"]
+resource_name = "Attack"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.666667, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 1.395, -1.13), Vector3(0, 1.2, 0.44), Vector3(0, 1.395, 1.875)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"root_update_attack"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Area3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ovhpr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Area3D/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rleq8"]
+_data = {
+"Attack": SubResource("Animation_e8hi8"),
+"RESET": SubResource("Animation_ovhpr")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_luvo8"]
-radius = 0.636231
-height = 5.0
+radius = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_shsf5"]
-size = Vector3(0.524963, 0.454208, 1.61998)
+size = Vector3(0.524963, 0.454208, 0.922722)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j4ua5"]
+radius = 0.29
 
 [node name="Bat" type="CharacterBody3D"]
 script = ExtResource("1_116uj")
 
-[node name="Body" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 2.5, 0.12)
-shape = SubResource("CapsuleShape3D_luvo8")
-
-[node name="DetectionRange" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00228854, 0.857566, 0.303334)
-shape = SubResource("BoxShape3D_shsf5")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 0
+libraries = {
+"": SubResource("AnimationLibrary_rleq8")
+}
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="bat" parent="." instance=ExtResource("3_x4a68")]
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_luvo8")
+
+[node name="DetectionRange" type="Area3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1.19209e-07)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/DetectionRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00228854, 0.857566, 0.205777)
+shape = SubResource("BoxShape3D_shsf5")
+
+[node name="bat" parent="Body" instance=ExtResource("3_x4a68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1.19209e-07)
+
+[node name="Area3D" type="Area3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1.19209e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.710591, 0)
+shape = SubResource("SphereShape3D_j4ua5")
+disabled = true

@@ -1,13 +1,13 @@
 extends CharacterBody3D
-@export var speed = 4.0
+@export var speed = 3.0
 @export var explosion_scene : PackedScene
 @export var robot : Node
 @export var human : Node
 @export var gravity = -9.8
 @export var death_sound: AudioStream 
-@onready var attack = $scorpion/Scorpion/Skeleton3D/BoneAttachment3D/Area3D
-@onready var anim_player = $scorpion/AnimationPlayer
-@onready var detection_range = $DetectionRange
+@onready var attack = $Body/Area3D
+@onready var anim_player = $AnimationPlayer
+@onready var detection_range = $Body/DetectionRange
 @onready var nav_agent = $NavigationAgent3D
 var in_range = false
 var health = 1
@@ -22,19 +22,21 @@ func _on_body_entered(body): if body == robot: in_range = true
 
 func _on_body_exited(body): if body == robot: in_range = false
 
-func point_towards_robot():
-	if robot and robot.is_inside_tree():
-		var direction = (robot.global_transform.origin - global_transform.origin).normalized()
-		rotation.y = atan2(direction.x, direction.z) 
+func point_towards_robot(interpolation_speed: float = 1.0):
+	var direction = (robot.global_transform.origin - global_transform.origin).normalized()
+	var target_y_rotation = atan2(direction.x, direction.z)
+	rotation.y = lerp_angle(rotation.y, target_y_rotation, interpolation_speed)
+	return abs(rotation.y - target_y_rotation) # returns remaining amount needed to directly face the player
 	
 func _physics_process(delta):
 	if in_range:
 		velocity.x = 0
 		velocity.z = 0
-		point_towards_robot()
-		anim_player.play("ATTACK", 0.2, 1.0, false)
+		if anim_player.current_animation != "Attack" :
+			if point_towards_robot(0.1) < 0.1: # only attacks when fully facing player
+				anim_player.play("Attack", 0.0, 1.0, false) 
 		
-	elif anim_player.current_animation != "ATTACK":
+	elif anim_player.current_animation != "Attack":
 		if NavigationServer3D.map_get_iteration_id(nav_agent.get_navigation_map()) > 0:
 			if is_on_floor(): 
 				nav_agent.target_position = robot.global_transform.origin
@@ -43,11 +45,6 @@ func _physics_process(delta):
 				rotation.y = lerp_angle(rotation.y, atan2(nav_velocity.x, nav_velocity.z), 0.1)  # Gradual rotation
 				velocity.x = nav_velocity.x
 				velocity.z = nav_velocity.z
-		
-		if velocity.length() > 0 and is_on_floor():
-			anim_player.play("CRAWL", 0.2, 1.0, false)
-		else:
-			anim_player.play("IDLE", 0.2, 1.0, false)  
 			
 	if is_on_floor(): velocity.y = 0  
 	else: velocity.y += gravity * delta
@@ -75,3 +72,10 @@ func take_damage(amount: float) -> void:
 		death_audio.connect("finished", Callable(death_audio, "queue_free"))
 		
 		queue_free()
+
+func root_update_attack():
+	var original_global_position = $Body.global_transform.origin
+	anim_player.play("RESET", 0.0, 1, false)
+	anim_player.advance(0)  # Immediately reset the animation
+	var root_motion = original_global_position - $Body.global_transform.origin
+	global_transform.origin += root_motion
