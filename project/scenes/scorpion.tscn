@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm3il0xigoa0v"]
+[gd_scene load_steps=9 format=3 uid="uid://bm3il0xigoa0v"]
 
 [ext_resource type="Script" path="res://scripts/scorpion.gd" id="1_84mqq"]
+[ext_resource type="PackedScene" uid="uid://bbrh54kugbbtp" path="res://scenes/particles/alien_hurt.tscn" id="2_a1p5w"]
 [ext_resource type="AudioStream" uid="uid://bs314uq8bs5kp" path="res://audio/sfx/aliens/death.wav" id="2_rgh2r"]
 [ext_resource type="PackedScene" uid="uid://c8geqfrdk5dxh" path="res://models/scorpion.blend" id="3_227mx"]
+[ext_resource type="PackedScene" uid="uid://dmaqkxwv2hbas" path="res://scenes/particles/alien_death.tscn" id="3_vxpxy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_luvo8"]
 radius = 0.2
@@ -15,6 +17,8 @@ size = Vector3(2.50879, 5, 3.6748)
 
 [node name="Scorpion" type="CharacterBody3D"]
 script = ExtResource("1_84mqq")
+hurt_particles = ExtResource("2_a1p5w")
+death_particles = ExtResource("3_vxpxy")
 death_sound = ExtResource("2_rgh2r")
 
 [node name="Body" type="CollisionShape3D" parent="."]

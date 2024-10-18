@@ -1,7 +1,6 @@
 extends Node3D
 @export var enemy_scenes: Array[PackedScene]
 @export var enemy_weights: Array[int]
-@export var explosion_scene: PackedScene
 @export var robot: Node
 @export var human : Node
 
@@ -20,7 +19,6 @@ func spawn_enemy():
 			var parent_node = get_parent()
 			parent_node.add_child(enemy_instance) 
 			enemy_instance.global_transform.origin = global_transform.origin
-			enemy_instance.explosion_scene = explosion_scene
 			enemy_instance.robot = robot
 			enemy_instance.human = human
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://khpwg0gdmlrg"]
+[gd_scene load_steps=79 format=4 uid="uid://khpwg0gdmlrg"]
 
 [ext_resource type="PackedScene" uid="uid://ceqrl68dmbr0s" path="res://scenes/menu.tscn" id="1_c5mov"]
 [ext_resource type="Texture2D" uid="uid://be5nak2e74wok" path="res://images/sky.png" id="2_adhs1"]
@@ -33,14 +33,13 @@
 [ext_resource type="Texture2D" uid="uid://c17njcmn1rgyi" path="res://images/blowtorch.png" id="31_otjk6"]
 [ext_resource type="PackedScene" uid="uid://bbtdje8wss5gp" path="res://scenes/ufo.tscn" id="32_c5mo7"]
 [ext_resource type="PackedScene" uid="uid://bm3il0xigoa0v" path="res://scenes/scorpion.tscn" id="33_cdge4"]
-[ext_resource type="PackedScene" uid="uid://dmaqkxwv2hbas" path="res://scenes/explosion.tscn" id="34_ntq25"]
 [ext_resource type="Texture2D" uid="uid://k47x5s61y3w8" path="res://images/grass.png" id="35_lkfkt"]
 [ext_resource type="MeshLibrary" uid="uid://xlechh35q3wq" path="res://resources/mesh libraries/city.meshlib" id="36_84iyc"]
 [ext_resource type="PackedScene" uid="uid://2cu5rpqxgg0c" path="res://scenes/robot.tscn" id="37_h1le3"]
 [ext_resource type="AudioStream" uid="uid://ca8qjsgoi46ps" path="res://audio/sfx/robot/footstep_1.wav" id="38_nqbd1"]
 [ext_resource type="AudioStream" uid="uid://dfpgyyiddby73" path="res://audio/sfx/robot/footstep_2.wav" id="39_hojvp"]
 [ext_resource type="AudioStream" uid="uid://b7ygo7e42ycg5" path="res://audio/sfx/robot/footstep_3.wav" id="40_sijwu"]
-[ext_resource type="PackedScene" uid="uid://cwmswa8n8wkhk" path="res://scenes/ploom.tscn" id="41_axo8j"]
+[ext_resource type="PackedScene" uid="uid://cwmswa8n8wkhk" path="res://scenes/particles/ploom.tscn" id="41_axo8j"]
 [ext_resource type="PackedScene" uid="uid://08j8ukpngmn2" path="res://scenes/bat.tscn" id="42_57pgx"]
 [ext_resource type="Script" path="res://scripts/cinematic.gd" id="42_qen0u"]
 
@@ -945,7 +944,6 @@ shadow_opacity = 0.74
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.9987, -16)
 enemy_scenes = Array[PackedScene]([ExtResource("33_cdge4"), ExtResource("42_57pgx")])
 enemy_weights = Array[int]([2, 1])
-explosion_scene = ExtResource("34_ntq25")
 robot = NodePath("../Robot")
 human = NodePath("../../Interior/Human")
 
@@ -998,6 +996,9 @@ bones/7/rotation = Quaternion(-0.707026, -0.00115496, -0.000584729, 0.707186)
 bones/8/rotation = Quaternion(0.0150355, -0.00113272, 0.00260257, 0.999883)
 bones/9/rotation = Quaternion(-0.707026, 0.0011548, 0.000584567, 0.707186)
 bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
+
+[node name="BoneAttachment3D" parent="Exterior/Robot/Mesh/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.00042237, 1, 0.000319824, -1, 0.000422366, 9.05294e-06, 8.91785e-06, -0.000319828, 1, 0.315789, 1.01373, 0.000674709)
 
 [node name="AnimationPlayer" parent="Exterior/Robot/Mesh" index="1"]
 playback_auto_capture = true

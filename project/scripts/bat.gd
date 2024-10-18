@@ -1,9 +1,10 @@
 extends CharacterBody3D
 @export var speed = 3.0
-@export var explosion_scene : PackedScene
 @export var robot : Node
 @export var human : Node
 @export var gravity = -9.8
+@export var hurt_particles : PackedScene
+@export var death_particles : PackedScene
 @export var death_sound: AudioStream 
 @onready var attack = $Body/Area3D
 @onready var anim_player = $AnimationPlayer
@@ -57,10 +58,16 @@ func _on_attack_entered(body):
 		
 func take_damage(amount: float) -> void:
 	health -= amount
+	robot.camera.shake = 3; 
+	
+	var hurt_particles_instance = hurt_particles.instantiate()
+	hurt_particles_instance.global_transform = global_transform
+	get_tree().current_scene.add_child(hurt_particles_instance) 
+	
 	if health <= 0: 
-		var explosion = explosion_scene.instantiate()
-		explosion.global_transform = global_transform
-		get_tree().current_scene.add_child(explosion) 
+		var death_particles_instance = death_particles.instantiate()
+		death_particles_instance.global_transform = global_transform
+		get_tree().current_scene.add_child(death_particles_instance) 
 		robot.camera.shake = 3; 
 		
 		var death_audio = AudioStreamPlayer3D.new(); 
@@ -70,7 +77,6 @@ func take_damage(amount: float) -> void:
 		death_audio.bus = "SFX"
 		death_audio.play()
 		death_audio.connect("finished", Callable(death_audio, "queue_free"))
-		
 		queue_free()
 
 func root_update_attack():

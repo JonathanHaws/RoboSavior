@@ -1,16 +1,17 @@
 extends CharacterBody3D
 @export var speed = 2.0
-@export var explosion_scene : PackedScene
 @export var robot : Node
 @export var human : Node
 @export var gravity = -9.8
+@export var hurt_particles : PackedScene
+@export var death_particles : PackedScene
 @export var death_sound: AudioStream 
 @onready var attack = $scorpion/Scorpion/Skeleton3D/BoneAttachment3D/Area3D
 @onready var anim_player = $scorpion/AnimationPlayer
 @onready var detection_range = $DetectionRange
 @onready var nav_agent = $NavigationAgent3D
 var in_range = false
-var health = 3
+var health = 2
 
 func _ready():
 	detection_range.connect("body_entered", Callable(self, "_on_body_entered"))
@@ -62,10 +63,15 @@ func _on_attack_entered(body):
 func take_damage(amount: float) -> void:
 	health -= amount
 	robot.camera.shake = 3; 
+	
+	var hurt_particles_instance = hurt_particles.instantiate()
+	hurt_particles_instance.global_transform = global_transform
+	get_tree().current_scene.add_child(hurt_particles_instance) 
+	
 	if health <= 0: 
-		var explosion = explosion_scene.instantiate()
-		explosion.global_transform = global_transform
-		get_tree().current_scene.add_child(explosion) 
+		var death_particles_instance = death_particles.instantiate()
+		death_particles_instance.global_transform = global_transform
+		get_tree().current_scene.add_child(death_particles_instance) 
 		
 		var death_audio = AudioStreamPlayer3D.new(); 
 		death_audio.stream = death_sound; 

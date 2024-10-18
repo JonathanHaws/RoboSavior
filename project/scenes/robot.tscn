@@ -17,6 +17,7 @@ size = Vector3(0.133885, 0.325834, 0.132129)
 
 [node name="Robot" type="CharacterBody3D"]
 disable_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_ytje0")
 projectile_scene = ExtResource("2_r0uyo")
 

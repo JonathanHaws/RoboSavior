@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmaqkxwv2hbas"]
+
+[ext_resource type="Script" path="res://scripts/particles.gd" id="1_h2e2f"]
+
+[sub_resource type="Gradient" id="Gradient_jlop4"]
+offsets = PackedFloat32Array(0, 0.9, 1)
+colors = PackedColorArray(0.490933, 0.7, 0.308, 1, 0.475975, 0.502858, 0.452801, 1, 0.0768358, 0.0768358, 0.0768358, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y6tug"]
+gradient = SubResource("Gradient_jlop4")
+
+[sub_resource type="Curve" id="Curve_735dr"]
+max_value = 2.0
+_data = [Vector2(0.0137931, 2), 0.0, 0.0, 0, 0, Vector2(0.965517, 0.153846), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4nd2d"]
+curve = SubResource("Curve_735dr")
+
+[sub_resource type="Curve" id="Curve_aj3jt"]
+_data = [Vector2(0, 0.0879121), 0.0, 0.0, 0, 0, Vector2(0.158621, 0.67033), 2.88805, 2.88805, 0, 0, Vector2(1, 0), -0.105349, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fhgt6"]
+curve = SubResource("Curve_aj3jt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fr7ig"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 5, 0)
+scale_min = 1.8
+scale_max = 1.8
+scale_curve = SubResource("CurveTexture_fhgt6")
+color = Color(1, 1, 1, 0.207843)
+color_ramp = SubResource("GradientTexture1D_y6tug")
+emission_curve = SubResource("CurveTexture_4nd2d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4oycx"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_jul5x"]
+material = SubResource("StandardMaterial3D_4oycx")
+radial_segments = 8
+rings = 4
+
+[node name="Death" type="Node3D"]
+script = ExtResource("1_h2e2f")
+
+[node name="Explosions" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_fr7ig")
+draw_pass_1 = SubResource("SphereMesh_jul5x")

@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://08j8ukpngmn2"]
+[gd_scene load_steps=11 format=3 uid="uid://08j8ukpngmn2"]
 
 [ext_resource type="Script" path="res://scripts/bat.gd" id="1_116uj"]
+[ext_resource type="PackedScene" uid="uid://dmaqkxwv2hbas" path="res://scenes/particles/alien_death.tscn" id="2_t6lsf"]
+[ext_resource type="PackedScene" uid="uid://bbrh54kugbbtp" path="res://scenes/particles/alien_hurt.tscn" id="3_dtn0b"]
 [ext_resource type="PackedScene" uid="uid://b55tp34hpwak5" path="res://models/bat.blend" id="3_x4a68"]
 
 [sub_resource type="Animation" id="Animation_e8hi8"]
@@ -88,7 +90,11 @@ size = Vector3(0.524963, 0.454208, 0.922722)
 radius = 0.29
 
 [node name="Bat" type="CharacterBody3D"]
+disable_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_116uj")
+hurt_particles = ExtResource("3_dtn0b")
+death_particles = ExtResource("2_t6lsf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0
