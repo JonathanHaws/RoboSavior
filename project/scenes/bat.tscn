@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://08j8ukpngmn2"]
+[gd_scene load_steps=12 format=3 uid="uid://08j8ukpngmn2"]
 
 [ext_resource type="Script" path="res://scripts/bat.gd" id="1_116uj"]
 [ext_resource type="PackedScene" uid="uid://dmaqkxwv2hbas" path="res://scenes/particles/alien_death.tscn" id="2_t6lsf"]
 [ext_resource type="PackedScene" uid="uid://bbrh54kugbbtp" path="res://scenes/particles/alien_hurt.tscn" id="3_dtn0b"]
 [ext_resource type="PackedScene" uid="uid://b55tp34hpwak5" path="res://models/bat.blend" id="3_x4a68"]
+[ext_resource type="AudioStream" uid="uid://bs314uq8bs5kp" path="res://audio/sfx/aliens/death.wav" id="4_f44jp"]
 
 [sub_resource type="Animation" id="Animation_e8hi8"]
 resource_name = "Attack"
@@ -95,6 +96,7 @@ platform_on_leave = 2
 script = ExtResource("1_116uj")
 hurt_particles = ExtResource("3_dtn0b")
 death_particles = ExtResource("2_t6lsf")
+death_sound = ExtResource("4_f44jp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0
@@ -127,3 +129,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1.19209e-07)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.710591, 0)
 shape = SubResource("SphereShape3D_j4ua5")
 disabled = true
+
+[node name="Particles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.761123, 0)

@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var death_particles : PackedScene
 @export var death_sound: AudioStream 
 @onready var attack = $scorpion/Scorpion/Skeleton3D/BoneAttachment3D/Area3D
-@onready var anim_player = $scorpion/AnimationPlayer
+@onready var anim_player = $AnimationPlayer
 @onready var detection_range = $DetectionRange
 @onready var nav_agent = $NavigationAgent3D
 var in_range = false
@@ -33,11 +33,11 @@ func _physics_process(delta):
 	if in_range:
 		velocity.x = 0
 		velocity.z = 0
-		if anim_player.current_animation != "ATTACK" :
+		if anim_player.current_animation != "Attack" :
 			if point_towards_robot(0.1) < 0.1: # only attacks when fully facing player
-				anim_player.play("ATTACK", 0.2, 1.0, false) 
+				anim_player.play("Attack", -1, 1.0, false) 
 		
-	elif anim_player.current_animation != "ATTACK":
+	elif anim_player.current_animation != "Attack":
 		if NavigationServer3D.map_get_iteration_id(nav_agent.get_navigation_map()) > 0:
 			if is_on_floor(): 
 				nav_agent.target_position = robot.global_transform.origin
@@ -48,9 +48,9 @@ func _physics_process(delta):
 				velocity.z = nav_velocity.z
 		
 		if velocity.length() > 0 and is_on_floor():
-			anim_player.play("CRAWL", 0.2, 1.0, false)
+			anim_player.play("Crawl", -1, 1.0, false)
 		else:
-			anim_player.play("IDLE", 0.2, 1.0, false)  
+			anim_player.play("Idle", -1, 1.0, false)  
 			
 	if is_on_floor(): velocity.y = 0  
 	else: velocity.y += gravity * delta
@@ -65,12 +65,12 @@ func take_damage(amount: float) -> void:
 	robot.camera.shake = 3; 
 	
 	var hurt_particles_instance = hurt_particles.instantiate()
-	hurt_particles_instance.global_transform = global_transform
+	hurt_particles_instance.global_transform = $Particles.global_transform
 	get_tree().current_scene.add_child(hurt_particles_instance) 
 	
 	if health <= 0: 
 		var death_particles_instance = death_particles.instantiate()
-		death_particles_instance.global_transform = global_transform
+		death_particles_instance.global_transform = $Particles.global_transform
 		get_tree().current_scene.add_child(death_particles_instance) 
 		
 		var death_audio = AudioStreamPlayer3D.new(); 

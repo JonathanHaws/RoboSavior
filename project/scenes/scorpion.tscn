@@ -1,10 +1,74 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm3il0xigoa0v"]
+[gd_scene load_steps=13 format=3 uid="uid://bm3il0xigoa0v"]
 
 [ext_resource type="Script" path="res://scripts/scorpion.gd" id="1_84mqq"]
 [ext_resource type="PackedScene" uid="uid://bbrh54kugbbtp" path="res://scenes/particles/alien_hurt.tscn" id="2_a1p5w"]
 [ext_resource type="AudioStream" uid="uid://bs314uq8bs5kp" path="res://audio/sfx/aliens/death.wav" id="2_rgh2r"]
 [ext_resource type="PackedScene" uid="uid://c8geqfrdk5dxh" path="res://models/scorpion.blend" id="3_227mx"]
 [ext_resource type="PackedScene" uid="uid://dmaqkxwv2hbas" path="res://scenes/particles/alien_death.tscn" id="3_vxpxy"]
+
+[sub_resource type="Animation" id="Animation_kkqcb"]
+resource_name = "Attack"
+length = 2.08334
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scorpion/Scorpion/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scorpion/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("Attack"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_rvx5h"]
+resource_name = "Crawl"
+length = 0.875004
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scorpion/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Crawl"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_g4ygx"]
+resource_name = "Idle"
+length = 2.08334
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scorpion/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5ijv"]
+_data = {
+"Attack": SubResource("Animation_kkqcb"),
+"Crawl": SubResource("Animation_rvx5h"),
+"Idle": SubResource("Animation_g4ygx")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_luvo8"]
 radius = 0.2
@@ -20,6 +84,11 @@ script = ExtResource("1_84mqq")
 hurt_particles = ExtResource("2_a1p5w")
 death_particles = ExtResource("3_vxpxy")
 death_sound = ExtResource("2_rgh2r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n5ijv")
+}
 
 [node name="Body" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 1, 0.12)
@@ -59,7 +128,7 @@ bones/13/rotation = Quaternion(-0.706963, -0.0142369, 0.0142369, 0.706964)
 bones/14/rotation = Quaternion(-0.706981, 0.0133549, -0.0133549, 0.706981)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="scorpion/Scorpion/Skeleton3D" index="1"]
-transform = Transform3D(-1, -1.7954e-07, -6.67807e-07, -5.32194e-07, -0.416078, 0.909329, -4.41084e-07, 0.909328, 0.416078, 0.00161931, 11.6104, -5.7384)
+transform = Transform3D(-0.927369, 0.070177, 0.367508, 0.323242, -0.344383, 0.881428, 0.18842, 0.936202, 0.296686, 4.04603, 12.4019, -4.85798)
 bone_name = "Tail.004"
 bone_idx = 12
 
@@ -69,5 +138,12 @@ bone_idx = 12
 transform = Transform3D(1, -4.64382e-10, -2.68145e-09, 1.25733e-08, 0.999999, -2.38419e-07, -3.61011e-09, -1.78814e-07, 0.999999, -0.0260685, 2.76861, -1.34184)
 shape = SubResource("BoxShape3D_5guj4")
 disabled = true
+
+[node name="AnimationPlayer" parent="scorpion" index="1"]
+callback_mode_process = 0
+playback_default_blend_time = 0.2
+
+[node name="Particles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.726094, 0)
 
 [editable path="scorpion"]

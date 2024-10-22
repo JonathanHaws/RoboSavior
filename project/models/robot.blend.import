@@ -34,7 +34,7 @@ import_script/path=""
 _subresources={
 "animations": {
 "Defeat": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://resources/animations/defeat.res",
 "settings/loop_mode": 0,
@@ -1833,7 +1833,7 @@ _subresources={
 "slices/amount": 0
 },
 "Intro": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://resources/animations/intro.res",
 "settings/loop_mode": 0,
@@ -3632,8 +3632,8 @@ _subresources={
 "slices/amount": 0
 },
 "Punch": {
-"save_to_file/enabled": true,
-"save_to_file/keep_custom_tracks": true,
+"save_to_file/enabled": false,
+"save_to_file/keep_custom_tracks": false,
 "save_to_file/path": "res://resources/animations/robot_punch_hitbox.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -5431,7 +5431,7 @@ _subresources={
 "slices/amount": 0
 },
 "RESET": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "res://resources/animations/robot_default.res",
 "settings/loop_mode": 0,
@@ -7230,7 +7230,7 @@ _subresources={
 "slices/amount": 0
 },
 "Retreat": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://resources/animations/retreat.res",
 "settings/loop_mode": 0,
@@ -9029,10 +9029,10 @@ _subresources={
 "slices/amount": 0
 },
 "Run": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://resources/animations/robot_footsteps.res",
-"settings/loop_mode": 1,
+"settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
 "slice_1/name": "",
@@ -10828,7 +10828,7 @@ _subresources={
 "slices/amount": 0
 },
 "Steer": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://resources/animations/steer.res",
 "settings/loop_mode": 0,

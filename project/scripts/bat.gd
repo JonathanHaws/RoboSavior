@@ -61,12 +61,12 @@ func take_damage(amount: float) -> void:
 	robot.camera.shake = 3; 
 	
 	var hurt_particles_instance = hurt_particles.instantiate()
-	hurt_particles_instance.global_transform = global_transform
+	hurt_particles_instance.global_transform = $Particles.global_transform
 	get_tree().current_scene.add_child(hurt_particles_instance) 
 	
 	if health <= 0: 
 		var death_particles_instance = death_particles.instantiate()
-		death_particles_instance.global_transform = global_transform
+		death_particles_instance.global_transform = $Particles.global_transform
 		get_tree().current_scene.add_child(death_particles_instance) 
 		robot.camera.shake = 3; 
 		

@@ -9,7 +9,8 @@ extends CharacterBody3D
 @export var break_sounds: Array[AudioStream]  
 @export var cinematic: AnimationPlayer
 @onready var camera = $Pivot/SpringArm3D/Camera3D
-@onready var anim_player = $Mesh/AnimationPlayer
+@onready var anim_player = $AnimationPlayer
+@onready var skeleton_anim_player = $Mesh/AnimationPlayer
 @onready var attack = $Mesh/Armature/Skeleton3D/BoneAttachment3D/Area3D
 var mouse_delta = Vector2.ZERO # Only update oretientation in physics process so spring arm can collide correctly
 var health = 0;
@@ -35,7 +36,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("steer"):
 			if anim_player.current_animation not in ["Punch", "Intro", "Defeat"]: 
 				if anim_player.current_animation != "Retreat":
-					anim_player.play("Retreat", 0.5, 1.0, false)	
+					anim_player.play("Retreat", -1, 1.0, false)	
 			
 		#if is_on_floor() and Input.is_action_just_pressed("jump"): 	
 			#velocity.y = jump_velocity
@@ -44,11 +45,11 @@ func _physics_process(delta):
 			velocity.x = 0
 			velocity.z = 0
 			anim_player.stop()
-			anim_player.play("Punch", 0.2, 1.0, false)
+			anim_player.play("Punch", -1, 1.0, false)
 		
 		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch"]: # Run
 			if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-				anim_player.play("Run", 0.0, 1.0, 0.0) 
+				anim_player.play("Run", -1, 1.0, 0.0) 
 				var direction = Vector3.ZERO
 				direction -= $Pivot.global_transform.basis.z * (int(Input.is_action_pressed("forward")) - int(Input.is_action_pressed("backward")))
 				direction -= $Pivot.global_transform.basis.x * (int(Input.is_action_pressed("left")) - int(Input.is_action_pressed("right")))
@@ -57,14 +58,14 @@ func _physics_process(delta):
 		
 		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch"]: # Idle
 			if not (Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right")):
-				anim_player.play("Idle", 0.2, 1.0, 0.0) 
+				anim_player.play("Idle", -1, 1.0, 0.0) 
 					
 	else:
 		
 		if Input.is_action_just_pressed("steer"):
-			anim_player.play("Steer", 0.0, 1.0, false)	
+			anim_player.play("Steer", -1, 1.0, false)	
 	
-	var root_motion_position = anim_player.get_root_motion_position() 
+	var root_motion_position = skeleton_anim_player.get_root_motion_position() 
 	var transformed_root_motion = $Mesh.global_transform.basis * root_motion_position
 	global_transform.origin += transformed_root_motion; 
 	#if anim_player.current_animation == "Run": print(root_motion_position) // Fix stutter with root motion
@@ -89,7 +90,7 @@ func take_damage(_amount: float) -> void:
 			health -= 1;	
 			return;
 	if health < 1:
-		cinematic.play("Defeat", 0.2, 1.0, false)
+		cinematic.play("Defeat", 0.0, 1.0, false)
 
 func play_footstep():
 	if footstep_sounds.size() > 0:
