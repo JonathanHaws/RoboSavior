@@ -5,15 +5,13 @@
 [ext_resource type="AudioStream" uid="uid://chpabnup7yfds" path="res://audio/sfx/menu/hover.wav" id="2_vn3cn"]
 [ext_resource type="AudioStream" uid="uid://seyx463wydpp" path="res://audio/sfx/menu/pressed.wav" id="3_c0w6l"]
 
-[node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "options_menu", "controls_menu", "credits_menu", "hover_sound_player", "pressed_sound_player")]
+[node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "options_menu", "controls_menu", "credits_menu")]
 process_mode = 3
 script = ExtResource("1_klscs")
 main_menu = NodePath("MarginContainer/CenterContainer/Main")
 options_menu = NodePath("MarginContainer/CenterContainer/Options")
 controls_menu = NodePath("MarginContainer/CenterContainer/Controls")
 credits_menu = NodePath("MarginContainer/CenterContainer/Credits")
-hover_sound_player = NodePath("")
-pressed_sound_player = NodePath("")
 hover_sound = ExtResource("2_vn3cn")
 pressed_sound = ExtResource("3_c0w6l")
 
@@ -170,10 +168,10 @@ bbcode_enabled = true
 text = "
 [center] 
 [color=#ececec] Wild Fireflies[/color][color=#858585]- 2024 GMTK Jam \"Built To Scale\" Entry Fork  [/color]
-[color=#ececec]FantaLaTone [/color][color=#858585]- Progamming / Modeling / Godot 4.3 [/color]
-[color=#ececec]MiguelAngel0 [/color][color=#858585]- Music / Sound Effects  / Cubase [/color]
-[color=#ececec]Asuriダ [/color][color=#858585]- Modeling / Animation/ Blender 4.1  [/color]
-[color=#ececec]Nemo [/color][color=#858585]- Texturing / Programming / Procreate  [/color]
+[color=#ececec]FantaLaTone [/color][color=#858585]- Progamming / Modeling / Godot 4.3 - Turkiye [/color]
+[color=#ececec]MiguelAngel0 [/color][color=#858585]- Music / Sound Effects  / Cubase - Spain [/color]
+[color=#ececec]Asuriダ [/color][color=#858585]- Modeling / Animation/ Blender 4.1  - Portugal [/color]
+[color=#ececec]Nemo [/color][color=#858585]- Texturing / Programming / Procreate - USA  [/color]
 [/center]"
 fit_content = true
 
