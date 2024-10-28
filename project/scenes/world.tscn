@@ -961,13 +961,13 @@ cinematic = NodePath("../../AnimationPlayer")
 [node name="Plooms" type="Node3D" parent="Exterior"]
 
 [node name="1" parent="Exterior/Plooms" instance=ExtResource("41_axo8j")]
-transform = Transform3D(0.886745, 0, 0.462259, 0, 1, 0, -0.462259, 0, 0.886745, -6.98947, 2.94447, 3.27506)
+transform = Transform3D(0.886745, 0, 0.462259, 0, 1, 0, -0.462259, 0, 0.886745, -6.98947, 2.94447, 3.64404)
 
 [node name="2" parent="Exterior/Plooms" instance=ExtResource("41_axo8j")]
-transform = Transform3D(0.886745, 0, 0.462259, 0, 1, 0, -0.462259, 0, 0.886745, 5.4322, 2.8536, 1.23216)
+transform = Transform3D(0.886745, 0, 0.462259, 0, 1, 0, -0.462259, 0, 0.886745, 5.82145, 2.8536, 0.526525)
 
 [node name="3" parent="Exterior/Plooms" instance=ExtResource("41_axo8j")]
-transform = Transform3D(0.128814, 0, 0.991669, 0, 1, 0, -0.991669, 0, 0.128814, 13.4729, 3.21456, -0.541361)
+transform = Transform3D(0.128814, 0, 0.991669, 0, 1, 0, -0.991669, 0, 0.128814, 13.7818, 3.21456, -0.541361)
 
 [node name="4" parent="Exterior/Plooms" instance=ExtResource("41_axo8j")]
 transform = Transform3D(0.572633, 0, 0.819812, 0, 1, 0, -0.819812, 0, 0.572633, -12.5514, 3.03408, 0.565532)
@@ -976,7 +976,7 @@ transform = Transform3D(0.572633, 0, 0.819812, 0, 1, 0, -0.819812, 0, 0.572633, 
 transform = Transform3D(-0.966814, 0, 0.255482, 0, 1, 0, -0.255482, 0, -0.966814, -8.24553, 3.15388, -17.3055)
 
 [node name="6" parent="Exterior/Plooms" instance=ExtResource("41_axo8j")]
-transform = Transform3D(0.869458, 0, -0.494007, 0, 1, 0, 0.494007, 0, 0.869458, 4.16186, 3.1278, -15.5129)
+transform = Transform3D(0.869458, 0, -0.494007, 0, 1, 0, 0.494007, 0, 0.869458, 4.16186, 3.1278, -17.8447)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../PostProcess")
