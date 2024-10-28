@@ -533,7 +533,7 @@ bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.998396, 0.0383862, -0.0416219, -0.0423822, -0.994103, 0.0998117, -0.037545, 0.101416, 0.994135, 0.240521, 0.88516, 0.0340833)
+transform = Transform3D(-0.995191, 0.0946086, -0.0253837, -0.0942076, -0.995415, -0.0165567, -0.0268338, -0.0140858, 0.999541, 0.213105, 0.867914, 0.0166678)
 bone_name = "arm_l"
 bone_idx = 6
 
@@ -547,6 +547,5 @@ disabled = true
 [node name="AnimationPlayer" parent="Mesh" index="1"]
 root_motion_track = NodePath("Armature/Skeleton3D:root")
 callback_mode_process = 0
-playback_default_blend_time = 0.2
 
 [editable path="Mesh"]

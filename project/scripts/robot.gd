@@ -63,7 +63,7 @@ func _physics_process(delta):
 	else:
 		
 		if Input.is_action_just_pressed("steer"):
-			anim_player.play("Steer", -1, 1.0, false)	
+			anim_player.play("Steer", 0.0, 1.0, false)	
 	
 	var root_motion_position = skeleton_anim_player.get_root_motion_position() 
 	var transformed_root_motion = $Mesh.global_transform.basis * root_motion_position

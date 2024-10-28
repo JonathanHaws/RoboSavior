@@ -12,8 +12,8 @@ func _ready():
 
 func _on_timer_timeout(): 
 	spawn_enemy()
-	print("Wait time:", $Spawn_Timer.wait_time) 
-	print("Time left:", $Spawn_Timer.time_left)
+	#print("Wait time:", $Spawn_Timer.wait_time) 
+	#print("Time left:", $Spawn_Timer.time_left)
 	
 func spawn_enemy(enemy_index: int = -1):
 	var selected_enemy_scene = null
