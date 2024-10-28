@@ -133,7 +133,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_8sinl"]
 resource_name = "Punch"
-length = 1.6667
+length = 1.41667
 step = 0.0166667
 tracks/0/type = "animation"
 tracks/0/imported = false
@@ -533,7 +533,7 @@ bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.999745, -0.0223941, 0.00291121, 0.0215039, -0.983412, -0.180106, 0.00689622, -0.179998, 0.983643, 0.250815, 0.927675, 0.130872)
+transform = Transform3D(-0.998396, 0.0383861, -0.0416219, -0.0423822, -0.994103, 0.0998116, -0.037545, 0.101416, 0.994135, 0.240522, 0.885307, 0.0340662)
 bone_name = "arm_l"
 bone_idx = 6
 
