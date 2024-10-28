@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://khpwg0gdmlrg"]
+[gd_scene load_steps=80 format=4 uid="uid://khpwg0gdmlrg"]
 
 [ext_resource type="PackedScene" uid="uid://ceqrl68dmbr0s" path="res://scenes/menu.tscn" id="1_c5mov"]
 [ext_resource type="Texture2D" uid="uid://be5nak2e74wok" path="res://images/sky.png" id="2_adhs1"]
@@ -137,7 +137,10 @@ normal_texture = ExtResource("17_mwpiu")
 size = Vector3(1.03539, 1.08726, 0.70996)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6nqp"]
-size = Vector3(1.01385, 1.11677, 0.621735)
+size = Vector3(1.26389, 1.34989, 1.20939)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61bns"]
+size = Vector3(0.858909, 1.34989, 1.57503)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qveui"]
 size = Vector3(0.975571, 3.41925, 6.00635)
@@ -712,7 +715,7 @@ omni_range = 2.208
 [node name="Hitbox" type="Area3D" parent="Interior/Faults/4"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/Faults/4/Hitbox"]
-transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 2.00253, -0.822781, 2.30004)
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 1.6718, -0.822781, 2.11722)
 shape = SubResource("BoxShape3D_k6nqp")
 
 [node name="Broken" parent="Interior/Faults/4" instance=ExtResource("20_wm1fs")]
@@ -749,8 +752,8 @@ omni_range = 4.02929
 [node name="Hitbox" type="Area3D" parent="Interior/Faults/5"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/Faults/5/Hitbox"]
-transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0.946325, -0.969391, 2.71493)
-shape = SubResource("BoxShape3D_k6nqp")
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0.954593, -0.852831, 2.23828)
+shape = SubResource("BoxShape3D_61bns")
 
 [node name="Broken" parent="Interior/Faults/5" instance=ExtResource("20_wm1fs")]
 transform = Transform3D(-0.417857, -0.245667, -0.87467, 0.875278, -0.366879, -0.315103, -0.243486, -0.897247, 0.368329, 0.548767, -0.788839, 2.78873)
