@@ -34,6 +34,7 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.z = 0
 		if anim_player.current_animation != "Attack" :
+			anim_player.play("Crawl", -1, 1.0, false) 
 			if point_towards_robot(0.1) < 0.1: # only attacks when fully facing player
 				anim_player.play("Attack", -1, 1.0, false) 
 		
