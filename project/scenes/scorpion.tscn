@@ -71,7 +71,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_luvo8"]
-radius = 0.2
+radius = 0.6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_shsf5"]
 size = Vector3(1.60382, 0.912109, 1.92517)
@@ -128,7 +128,7 @@ bones/13/rotation = Quaternion(-0.706963, -0.0142369, 0.0142369, 0.706964)
 bones/14/rotation = Quaternion(-0.706981, 0.0133549, -0.0133549, 0.706981)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="scorpion/Scorpion/Skeleton3D" index="1"]
-transform = Transform3D(-0.927369, 0.070177, 0.367508, 0.323242, -0.344383, 0.881428, 0.18842, 0.936202, 0.296686, 4.04603, 12.4019, -4.85798)
+transform = Transform3D(-1, -1.7954e-07, -6.67807e-07, -5.32194e-07, -0.416078, 0.909329, -4.41084e-07, 0.909328, 0.416078, 0.00161931, 11.6104, -5.7384)
 bone_name = "Tail.004"
 bone_idx = 12
 
