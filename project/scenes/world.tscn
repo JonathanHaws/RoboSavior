@@ -644,13 +644,13 @@ light_color = Color(0.968627, 0.529412, 0.211765, 1)
 
 [node name="Broken" type="MeshInstance3D" parent="Interior/Faults/2"]
 transform = Transform3D(2.67572, -0.860327, -1.54019e-09, 0.729736, 3.15456, 1.15011e-08, -4.27168e-09, -3.76061e-08, 1, 0.0275321, -0.254566, 0.132718)
+visible = false
 layers = 2
 material_override = SubResource("StandardMaterial3D_tjfbf")
 mesh = SubResource("QuadMesh_g1tsv")
 
 [node name="Fixed" type="MeshInstance3D" parent="Interior/Faults/2"]
 transform = Transform3D(2.67572, -0.860327, -1.54019e-09, 0.729736, 3.15456, 1.15011e-08, -4.27168e-09, -3.76061e-08, 1, 0.0275321, -0.254566, 0.132718)
-visible = false
 layers = 2
 material_override = SubResource("StandardMaterial3D_kj1pt")
 mesh = SubResource("QuadMesh_g1tsv")
@@ -754,6 +754,7 @@ shape = SubResource("BoxShape3D_k6nqp")
 
 [node name="Broken" parent="Interior/Faults/5" instance=ExtResource("20_wm1fs")]
 transform = Transform3D(-0.417857, -0.245667, -0.87467, 0.875278, -0.366879, -0.315103, -0.243486, -0.897247, 0.368329, 0.548767, -0.788839, 2.78873)
+visible = false
 
 [node name="screw" parent="Interior/Faults/5/Broken" index="0"]
 transform = Transform3D(0.143002, -0.107958, 0.0216058, 0.00505985, 0.0418233, 0.175489, -0.109982, -0.138445, 0.036166, -0.0879154, -0.0327902, -0.211034)
@@ -761,7 +762,6 @@ layers = 2
 
 [node name="Fixed" parent="Interior/Faults/5" instance=ExtResource("20_wm1fs")]
 transform = Transform3D(0.409036, 0.0353932, 0.911833, -0.912393, 0.0323806, 0.408031, -0.015084, -0.99885, 0.0455374, 1.0112, -0.477133, 1.66232)
-visible = false
 
 [node name="screw" parent="Interior/Faults/5/Fixed" index="0"]
 layers = 2
@@ -811,6 +811,7 @@ mesh = ExtResource("24_f5hg8")
 
 [node name="Broken" type="Node3D" parent="Interior/Faults/6"]
 transform = Transform3D(0.00436312, 0, -0.499981, 0, 0.5, 0, 0.499981, 0, 0.00436312, 0.697399, -0.764059, -0.799175)
+visible = false
 
 [node name="LongBroken" type="MeshInstance3D" parent="Interior/Faults/6/Broken"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1.5)
@@ -819,7 +820,6 @@ mesh = ExtResource("25_h26wc")
 
 [node name="Fixed" type="Node3D" parent="Interior/Faults/6"]
 transform = Transform3D(0.0043631, 0, -0.499981, 0, 0.5, 0, 0.499981, 0, 0.0043631, 0.697399, -0.764059, -0.799175)
-visible = false
 
 [node name="Long" type="MeshInstance3D" parent="Interior/Faults/6/Fixed"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1.5)

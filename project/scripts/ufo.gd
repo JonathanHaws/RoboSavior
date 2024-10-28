@@ -5,14 +5,23 @@ extends Node3D
 @export var human : Node
 
 func _ready():
+	$Waves.play("difficulty_increase", 0.0, 1.0, false)
+	$Waves.seek(0.01, true)
 	$Spawn_Timer.connect("timeout", Callable(self, "_on_timer_timeout"))
-	$Waves.play("difficulty_increase", -1.0, 1.0)
+	$Spawn_Timer.start($Spawn_Timer.wait_time)
 
-func _on_timer_timeout(): # Spawn Enemy
+func _on_timer_timeout(): 
 	spawn_enemy()
+	print("Wait time:", $Spawn_Timer.wait_time) 
+	print("Time left:", $Spawn_Timer.time_left)
 	
-func spawn_enemy():
-	var selected_enemy_scene = get_weighted_enemy_scene()
+func spawn_enemy(enemy_index: int = -1):
+	var selected_enemy_scene = null
+	if enemy_index >= 0 and enemy_index < enemy_scenes.size():
+		selected_enemy_scene = enemy_scenes[enemy_index]
+	else:
+		selected_enemy_scene = get_weighted_enemy_scene()
+	
 	if selected_enemy_scene:
 		var enemy_instance = selected_enemy_scene.instantiate()
 		if enemy_instance:
@@ -32,3 +41,8 @@ func get_weighted_enemy_scene() -> PackedScene:
 		if random_value < 0:
 			return enemy_scenes[i]
 	return null
+
+func _process(_delta):
+	#print("Wait time:", $Spawn_Timer.wait_time) 
+	#print("Time left:", $Spawn_Timer.time_left)
+	pass
