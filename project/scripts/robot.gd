@@ -13,7 +13,7 @@ extends CharacterBody3D
 @onready var skeleton_anim_player = $Mesh/AnimationPlayer
 @onready var attack = $Mesh/Armature/Skeleton3D/BoneAttachment3D/Area3D
 var mouse_delta = Vector2.ZERO # Only update oretientation in physics process so spring arm can collide correctly
-var health = 0;
+var health = 3;
 
 func _ready():
 	attack.connect("area_entered", Callable(self, "_on_attack_entered"))
@@ -63,7 +63,9 @@ func _physics_process(delta):
 	else:
 		
 		if Input.is_action_just_pressed("steer"):
-			anim_player.play("Steer", 0.0, 1.0, false)	
+			if anim_player.current_animation not in ["Intro", "Steer", "Defeat"]:
+				if health > 0:
+					anim_player.play("Steer", 0.0, 1.0, false)	
 	
 	var root_motion_position = skeleton_anim_player.get_root_motion_position() 
 	var transformed_root_motion = $Mesh.global_transform.basis * root_motion_position
@@ -80,6 +82,7 @@ func _on_attack_entered(body):
 		elif body.get_parent() and body.get_parent().get_parent() and body.get_parent().get_parent().has_method("take_damage"): body.get_parent().get_parent().take_damage(1)
 		
 func take_damage(_amount: float) -> void:
+	print(health)
 	var faults_shuffled = faults.get_children()
 	faults_shuffled.shuffle()
 	for fault in faults_shuffled:

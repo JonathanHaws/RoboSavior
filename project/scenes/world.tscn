@@ -292,7 +292,7 @@ size = Vector3(1000, 0, 1000)
 
 [sub_resource type="Animation" id="Animation_iem1w"]
 resource_name = "Defeat"
-length = 5.0
+length = 21.6667
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -301,34 +301,106 @@ tracks/0/path = NodePath("../Fade/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3.9, 5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(3.08333, 5.00001, 7.73333, 19.35, 21.6667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
-tracks/1/type = "method"
+tracks/1/type = "animation"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Menu")
+tracks/1/path = NodePath("../Exterior/Robot/AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(5),
+"clips": PackedStringArray("Defeat"),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AnimationPlayer/Camera3D:fov")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.53333, 10.9333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 60.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimationPlayer/Camera3D:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.53333, 10.9333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.21889, -22.8227, 2.89983), Vector3(-7.9096, -22.2302, -0.0703936)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AnimationPlayer/Camera3D:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.53333, 10.9333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.290556, 0.849068, 0), Vector3(-1.52974, 1.56903, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AnimationPlayer/Camera3D:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.00001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Interior/Human/Camera3D:current")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 5.00001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Menu")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(21.6667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"restart"
 }]
-}
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Exterior/Robot/AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": PackedStringArray("Defeat"),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_iheui"]
@@ -468,6 +540,66 @@ tracks/4/keys = {
 "update": 0,
 "values": [Quaternion(0.0342224, 0.960248, 0.241237, -0.136223)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AnimationPlayer/Camera3D:fov")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../AnimationPlayer/Camera3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../AnimationPlayer/Camera3D:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../AnimationPlayer/Camera3D:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.290556, 0.849068, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Interior/Human/Camera3D:current")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_esp0f"]
 _data = {
@@ -532,9 +664,10 @@ layers = 2
 transform = Transform3D(1.56064, 0, 0, 0, 1.56064, 0, 0, 0, 1.56064, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_k1kdx")
 
-[node name="Desk" parent="Interior/Control Panel" node_paths=PackedStringArray("label_3d") instance=ExtResource("7_7e1lf")]
+[node name="Desk" parent="Interior/Control Panel" node_paths=PackedStringArray("robot", "label_3d") instance=ExtResource("7_7e1lf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.91795, 1.13468, 0)
 script = ExtResource("8_j573l")
+robot = NodePath("../../../Exterior/Robot")
 label_3d = NodePath("Label3D")
 
 [node name="Desk" parent="Interior/Control Panel/Desk" index="0"]
@@ -950,7 +1083,7 @@ mesh_library = ExtResource("36_84iyc")
 cell_size = Vector3(1, 1, 1)
 bake_navigation = true
 data = {
-"cells": PackedInt32Array(131070, 65530, 1, 131070, 65532, 1, 131070, 65534, 1, 131070, 0, 1, 131070, 2, 1, 131070, 4, 1, 131070, 6, 5, 65536, 6, 1441793, 65538, 6, 1441793, 65540, 6, 1441793, 65542, 6, 1441793, 65544, 6, 655363, 131070, 8, 655362, 131068, 6, 1048577, 131066, 6, 1048577, 131064, 6, 1048577, 131062, 6, 1048577, 131060, 6, 1048579, 65544, 4, 1, 65544, 2, 1, 65544, 0, 1, 131060, 4, 1, 131060, 2, 1, 131060, 0, 1, 131060, 65534, 1, 65544, 65534, 1, 65538, 3, 6, 65539, 3, 6, 65540, 0, 6, 131063, 3, 6, 131066, 3, 6, 131067, 0, 6, 131064, 0, 6, 131067, 65532, 6, 131064, 65532, 6, 65538, 65532, 6, 65537, 65535, 6, 65547, 3, 6, 131062, 9, 6, 131057, 7, 6, 131056, 2, 6, 131056, 65533, 6, 131058, 65528, 6, 65542, 65525, 6, 65548, 65531, 6, 65550, 65535, 6, 131070, 65528, 2, 65544, 65532, 2, 131060, 65532, 2, 65548, 1, 6, 65548, 65535, 6, 65548, 65533, 6, 65547, 65529, 6, 65546, 65528, 6, 65547, 65526, 6, 65545, 65525, 6, 65543, 65527, 6, 65540, 65524, 6, 65541, 65522, 6, 65540, 65520, 6, 65539, 65518, 6, 65538, 65517, 6, 65536, 65516, 6, 131071, 65516, 6, 131069, 65516, 6, 131067, 65516, 6, 131066, 65518, 6, 131065, 65520, 6, 131064, 65521, 6, 131063, 65522, 6, 131062, 65523, 6, 131061, 65525, 6, 131059, 65526, 6, 131057, 65530, 6, 131057, 65531, 6, 131057, 65535, 6, 131057, 0, 6, 131056, 4, 6, 131056, 5, 6, 131058, 8, 6, 131059, 10, 6, 131060, 10, 6, 131069, 15, 6, 131071, 15, 6, 131061, 12, 6, 131067, 15, 6, 131066, 15, 6, 131065, 15, 6, 131064, 15, 6, 131063, 15, 6, 131063, 14, 6, 65537, 15, 6, 65538, 15, 6, 65539, 15, 6, 65540, 14, 6, 65542, 9, 6, 131059, 15, 6, 131056, 12, 6, 131065, 20, 6, 65536, 20, 6, 65544, 20, 6, 65549, 18, 6, 65552, 9, 6, 65553, 4, 6, 65548, 7, 6, 65548, 5, 6, 65547, 9, 6, 65546, 11, 6, 65544, 13, 6, 65542, 15, 6, 131060, 20, 6, 131053, 7, 6, 131052, 0, 6, 131053, 65530, 6, 131057, 65523, 6, 131061, 65518, 6, 65546, 65520, 6, 65542, 65517, 6, 65538, 65513, 6, 65554, 65528, 6, 65556, 65534, 6, 131052, 65525, 6, 131052, 11, 6, 65542, 4, 0, 65541, 11, 0, 131064, 11, 0, 131058, 4, 0, 131068, 65521, 0, 65538, 65523, 0, 65542, 65529, 0, 131063, 65525, 0, 65546, 6, 0, 131065, 13, 0, 65539, 10, 0, 65538, 12, 0, 131065, 65525, 0, 65539, 65526, 0, 131071, 65521, 0, 131061, 65529, 0, 65536, 65529, 0, 65546, 65532, 0, 131059, 65530, 0)
+"cells": PackedInt32Array(131070, 65530, 1, 131070, 65532, 1, 131070, 65534, 1, 131070, 0, 1, 131070, 2, 1, 131070, 4, 1, 131070, 6, 5, 65536, 6, 1441793, 65538, 6, 1441793, 65540, 6, 1441793, 65542, 6, 1441793, 65544, 6, 655363, 131070, 8, 655362, 131068, 6, 1048577, 131066, 6, 1048577, 131064, 6, 1048577, 131062, 6, 1048577, 131060, 6, 1048579, 65544, 4, 1, 65544, 2, 1, 65544, 0, 1, 131060, 4, 1, 131060, 2, 1, 131060, 0, 1, 131060, 65534, 1, 65544, 65534, 1, 65538, 3, 6, 65539, 3, 6, 65540, 0, 6, 131063, 3, 6, 131066, 3, 6, 131067, 0, 6, 131064, 0, 6, 131067, 65532, 6, 131064, 65532, 6, 65538, 65532, 6, 65537, 65535, 6, 65547, 3, 6, 131062, 9, 6, 131057, 7, 6, 131056, 2, 6, 131056, 65533, 6, 131058, 65528, 6, 65542, 65525, 6, 65548, 65531, 6, 65550, 65535, 6, 131070, 65528, 2, 65544, 65532, 2, 131060, 65532, 2, 65548, 1, 6, 65548, 65535, 6, 65548, 65533, 6, 65547, 65529, 6, 65546, 65528, 6, 65547, 65526, 6, 65545, 65525, 6, 65543, 65527, 6, 65540, 65524, 6, 65541, 65522, 6, 65540, 65520, 6, 65539, 65518, 6, 65538, 65517, 6, 65536, 65516, 6, 131071, 65516, 6, 131069, 65516, 6, 131067, 65516, 6, 131066, 65518, 6, 131065, 65520, 6, 131064, 65521, 6, 131063, 65522, 6, 131062, 65523, 6, 131061, 65525, 6, 131059, 65526, 6, 131057, 65530, 6, 131057, 65531, 6, 131057, 65535, 6, 131057, 0, 6, 131056, 4, 6, 131056, 5, 6, 131058, 8, 6, 131059, 10, 6, 131060, 10, 6, 131069, 15, 6, 131071, 15, 6, 131061, 12, 6, 131067, 15, 6, 131066, 15, 6, 131065, 15, 6, 131064, 15, 6, 131063, 15, 6, 131063, 14, 6, 65537, 15, 6, 65538, 15, 6, 65539, 15, 6, 65540, 14, 6, 65542, 9, 6, 131059, 15, 6, 131056, 12, 6, 131065, 20, 6, 65536, 20, 6, 65544, 20, 6, 65549, 18, 6, 65552, 9, 6, 65553, 4, 6, 65548, 7, 6, 65548, 5, 6, 65547, 9, 6, 65546, 11, 6, 65544, 13, 6, 65542, 15, 6, 131060, 20, 6, 131053, 7, 6, 131052, 0, 6, 131053, 65530, 6, 131057, 65523, 6, 131061, 65518, 6, 65546, 65520, 6, 65542, 65517, 6, 65538, 65513, 6, 65554, 65528, 6, 65556, 65534, 6, 131052, 65525, 6, 131052, 11, 6, 65542, 4, 0, 65541, 11, 0, 131064, 11, 0, 131058, 4, 0, 131068, 65521, 0, 65538, 65523, 0, 65542, 65529, 0, 131063, 65525, 0, 65546, 6, 0, 131065, 13, 0, 65539, 10, 0, 65538, 12, 0, 131065, 65525, 0, 65539, 65526, 0, 131061, 65529, 0, 65536, 65529, 0, 65546, 65532, 0, 131059, 65530, 0, 65536, 65521, 0)
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
@@ -987,6 +1120,9 @@ libraries = {
 "": SubResource("AnimationLibrary_esp0f")
 }
 script = ExtResource("42_qen0u")
+
+[node name="Camera3D" type="Camera3D" parent="AnimationPlayer"]
+transform = Transform3D(0.660683, -0.215054, 0.7192, 0, 0.958084, 0.286485, -0.750665, -0.189276, 0.63299, 0, 0, 0)
 
 [editable path="Interior/Facility"]
 [editable path="Interior/Control Panel/Chair"]
