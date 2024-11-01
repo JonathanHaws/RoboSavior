@@ -152,7 +152,7 @@ tracks/1/path = NodePath("Mesh/Armature/Skeleton3D/BoneAttachment3D/Area3D/Colli
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.666667, 0.716667),
+"times": PackedFloat32Array(0, 0.666667, 1.21667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -533,7 +533,7 @@ bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.950822, 0.309364, -0.0152218, 0.0346724, 0.0574721, -0.997745, -0.307791, -0.949205, -0.0653721, 0.486234, 0.0858471, 1.18493)
+transform = Transform3D(-0.998396, 0.0383862, -0.0416219, -0.0423822, -0.994103, 0.0998117, -0.037545, 0.101416, 0.994135, 0.240521, 0.88516, 0.0340833)
 bone_name = "arm_l"
 bone_idx = 6
 
