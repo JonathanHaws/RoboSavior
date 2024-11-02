@@ -91,6 +91,7 @@ func save_settings() -> void:
 	config.set_value("audio", "sfx_volume", options_menu.get_node("Sfx/Slider").value)
 	config.set_value("audio", "music_volume", options_menu.get_node("Music/Slider").value)
 	config.set_value("audio", "master_volume", options_menu.get_node("Master/Slider").value)
+	config.set_value("options", "display", options_menu.get_node("Display").selected)
 	config.save("user://settings.cfg")
 func load_settings() -> void:
 	var config = ConfigFile.new()
