@@ -70,7 +70,7 @@ func _physics_process(delta):
 	var root_motion_position = skeleton_anim_player.get_root_motion_position() 
 	var transformed_root_motion = $Mesh.global_transform.basis * root_motion_position
 	global_transform.origin += transformed_root_motion; 
-	#if anim_player.current_animation == "Run": print(root_motion_position) // Fix stutter with root motion
+	#if anim_player.current_animation == "Run": print(root_motion_position) # Fix stutter with root motion
 	
 	velocity.y += gravity * delta 
 	move_and_slide()
@@ -82,7 +82,7 @@ func _on_attack_entered(body):
 		elif body.get_parent() and body.get_parent().get_parent() and body.get_parent().get_parent().has_method("take_damage"): body.get_parent().get_parent().take_damage(1)
 		
 func take_damage(_amount: float) -> void:
-	print(health)
+	#print(health)
 	var faults_shuffled = faults.get_children()
 	faults_shuffled.shuffle()
 	for fault in faults_shuffled:
