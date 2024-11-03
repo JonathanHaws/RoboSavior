@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://2cu5rpqxgg0c"]
+[gd_scene load_steps=27 format=3 uid="uid://2cu5rpqxgg0c"]
 
 [ext_resource type="Script" path="res://scripts/robot.gd" id="1_ytje0"]
 [ext_resource type="PackedScene" uid="uid://dvbnm14rsi0xr" path="res://scenes/bullet.tscn" id="2_r0uyo"]
@@ -449,10 +449,26 @@ tracks/5/keys = {
 "values": [80.0, 90.0]
 }
 
+[sub_resource type="Animation" id="Animation_1mhqc"]
+resource_name = "Hurt"
+length = 0.566669
+step = 0.0166667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Hurt"),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqjbh"]
 _data = {
 "Aim": SubResource("Animation_ytw8x"),
 "Defeat": SubResource("Animation_c3ymu"),
+"Hurt": SubResource("Animation_1mhqc"),
 "Idle": SubResource("Animation_v3ec3"),
 "Intro": SubResource("Animation_2v1bb"),
 "Punch": SubResource("Animation_8sinl"),
@@ -540,7 +556,7 @@ bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.902366, 0.111319, -0.416344, 0.0058962, -0.962785, -0.270202, -0.430929, -0.246276, 0.868129, 0.253968, 0.912556, 0.0900613)
+transform = Transform3D(-0.998396, 0.0383861, -0.0416219, -0.0423822, -0.994103, 0.0998116, -0.037545, 0.101416, 0.994135, 0.244426, 0.883458, 0.0651852)
 bone_name = "arm_l"
 bone_idx = 6
 

@@ -41,13 +41,13 @@ func _physics_process(delta):
 		#if is_on_floor() and Input.is_action_just_pressed("jump"): 	
 			#velocity.y = jump_velocity
 			
-		if Input.is_action_just_pressed("punch") and is_on_floor() and anim_player.current_animation not in ["Intro","Steer", "Defeat", "Retreat", "Punch"]:
+		if Input.is_action_just_pressed("punch") and is_on_floor() and anim_player.current_animation not in ["Intro","Steer", "Defeat", "Retreat", "Punch", "Hurt"]:
 			velocity.x = 0
 			velocity.z = 0
 			anim_player.stop()
 			anim_player.play("Punch", -1, 1.0, false)
 		
-		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch"]: # Run
+		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]: # Run
 			if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 				anim_player.play("Run", -1, 1.0, 0.0) 
 				skeleton_anim_player.play("Run", -1, 1.0, false)	
@@ -57,7 +57,7 @@ func _physics_process(delta):
 				var flat_direction = Vector3(direction.x, 0, direction.z).normalized() # Reorient the mesh to face movement
 				$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, atan2(flat_direction.x, flat_direction.z) + PI, 8.0 * delta)
 		
-		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch"]: # Idle
+		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]: # Idle
 			if not (Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right")):
 				if anim_player.current_animation != "Idle":
 					anim_player.play("Idle", -1, 1.0, false)
@@ -94,6 +94,7 @@ func take_damage(_amount: float) -> void:
 			human.get_node("Camera3D").shake = 2; 
 			camera.shake = 2; 
 			fault.take_damage()	
+			anim_player.play("Hurt", -1, 1.0, false)
 			health -= 1;	
 			return;
 	if health < 1:
