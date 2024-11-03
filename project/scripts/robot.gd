@@ -46,11 +46,12 @@ func _physics_process(delta):
 			velocity.z = 0
 			anim_player.stop()
 			anim_player.play("Punch", -1, 1.0, false)
+			skeleton_anim_player.play("Punch", -1, 1.0, 0.0) 
 		
 		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]: # Run
 			if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 				anim_player.play("Run", -1, 1.0, 0.0) 
-				skeleton_anim_player.play("Run", -1, 1.0, false)	
+				skeleton_anim_player.play("Run", 0.1, 1.0, false)	
 				var direction = Vector3.ZERO
 				direction -= $Pivot.global_transform.basis.z * (int(Input.is_action_pressed("forward")) - int(Input.is_action_pressed("backward")))
 				direction -= $Pivot.global_transform.basis.x * (int(Input.is_action_pressed("left")) - int(Input.is_action_pressed("right")))
