@@ -50,6 +50,7 @@ func _physics_process(delta):
 		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch"]: # Run
 			if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 				anim_player.play("Run", -1, 1.0, 0.0) 
+				skeleton_anim_player.play("Run", -1, 1.0, false)	
 				var direction = Vector3.ZERO
 				direction -= $Pivot.global_transform.basis.z * (int(Input.is_action_pressed("forward")) - int(Input.is_action_pressed("backward")))
 				direction -= $Pivot.global_transform.basis.x * (int(Input.is_action_pressed("left")) - int(Input.is_action_pressed("right")))
@@ -58,7 +59,9 @@ func _physics_process(delta):
 		
 		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch"]: # Idle
 			if not (Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right")):
-				anim_player.play("Idle", -1, 1.0, 0.0) 
+				if anim_player.current_animation != "Idle":
+					anim_player.play("Idle", -1, 1.0, false)
+					skeleton_anim_player.play("Idle", .8, 1.0, false)	
 					
 	else:
 		
@@ -66,6 +69,7 @@ func _physics_process(delta):
 			if anim_player.current_animation not in ["Intro", "Steer", "Defeat"]:
 				if health > 0:
 					anim_player.play("Steer", 0.0, 1.0, false)	
+					skeleton_anim_player.play("Steer", 0.0, 1.0, false)	
 	
 	var root_motion_position = skeleton_anim_player.get_root_motion_position() 
 	var transformed_root_motion = $Mesh.global_transform.basis * root_motion_position
