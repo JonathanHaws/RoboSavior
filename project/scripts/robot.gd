@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var footstep_sounds: Array[AudioStream] 
 @export var break_sounds: Array[AudioStream]  
 @export var cinematic: AnimationPlayer
+@export var look_influence = 0.0
 @onready var camera = $Pivot/SpringArm3D/Camera3D
 @onready var anim_player = $AnimationPlayer
 @onready var skeleton_anim_player = $Mesh/AnimationPlayer
@@ -24,14 +25,13 @@ func _input(event): # LOOK
 
 func _physics_process(delta):
 	
-	if mouse_delta.length() > 0: # Look
-		if anim_player.current_animation not in ["Intro"]:
-			var y_rot = Quaternion(Vector3.UP, -mouse_delta.x * sensitivity) 
-			var x_rot = Quaternion($Pivot.transform.basis.x.normalized(), -mouse_delta.y * sensitivity)
-			$Pivot.transform.basis = Basis(y_rot) * Basis(x_rot) * $Pivot.transform.basis
-		mouse_delta = Vector2.ZERO
-	
 	if camera.current : 
+		
+		if mouse_delta.length() > 0: # Look
+			var y_rot = Quaternion(Vector3.UP, -mouse_delta.x * sensitivity * look_influence) 
+			var x_rot = Quaternion($Pivot.transform.basis.x.normalized(), -mouse_delta.y * sensitivity * look_influence)
+			$Pivot.transform.basis = Basis(y_rot) * Basis(x_rot) * $Pivot.transform.basis
+			mouse_delta = Vector2.ZERO
 		
 		if Input.is_action_just_pressed("steer"):
 			if anim_player.current_animation not in ["Punch", "Intro", "Defeat"]: 

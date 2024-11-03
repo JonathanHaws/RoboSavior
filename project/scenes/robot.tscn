@@ -120,6 +120,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [-80.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:look_influence")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(7.16667, 7.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_8sinl"]
 resource_name = "Punch"
@@ -230,6 +242,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [90.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:mouse_influence")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_gikwn"]
@@ -546,7 +570,7 @@ bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.998396, 0.0383861, -0.0416219, -0.0423822, -0.994103, 0.0998116, -0.037545, 0.101416, 0.994135, 0.240522, 0.885307, 0.0340662)
+transform = Transform3D(-0.99839, 0.0386871, -0.0414731, -0.0426433, -0.994154, 0.0991889, -0.0373933, 0.100798, 0.994204, 0.244207, 0.883381, 0.0644681)
 bone_name = "arm_l"
 bone_idx = 6
 
