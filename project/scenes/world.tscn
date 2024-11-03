@@ -1030,13 +1030,16 @@ transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, 3.107,
 robot = NodePath("../../Exterior/Robot")
 
 [node name="Drill" parent="Interior/Human/Camera3D/Items/drill" index="0"]
+layers = 1
 mesh = SubResource("ArrayMesh_0h5wn")
 
 [node name="Hammer" parent="Interior/Human/Camera3D/Items/hammer" index="0"]
+layers = 1
 mesh = SubResource("ArrayMesh_dnmlp")
 
 [node name="Blowtorch" parent="Interior/Human/Camera3D/Items/blowtorch" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00438589, 0, 0)
+layers = 1
 mesh = SubResource("ArrayMesh_5t27l")
 
 [node name="Exterior" type="Node3D" parent="."]

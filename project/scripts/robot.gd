@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var break_sounds: Array[AudioStream]  
 @export var cinematic: AnimationPlayer
 @export var look_influence = 0.0
+@export var turn_influence = 1.0
 @onready var camera = $Pivot/SpringArm3D/Camera3D
 @onready var anim_player = $AnimationPlayer
 @onready var skeleton_anim_player = $Mesh/AnimationPlayer
@@ -22,6 +23,16 @@ func _ready():
 func _input(event): # LOOK
 	if event is InputEventMouseMotion and camera.current :
 		mouse_delta += event.relative
+
+func get_input_rotation_y() -> float:
+	var direction = Vector3.ZERO
+	direction += Vector3.FORWARD * (int(Input.is_action_pressed("forward")) - int(Input.is_action_pressed("backward")))
+	direction -= Vector3.RIGHT * (int(Input.is_action_pressed("left")) - int(Input.is_action_pressed("right")))
+	var flat_direction = direction.normalized() # Normalize to get the direction vector
+	if flat_direction.length_squared() > 0: # Check if there's any movement
+		return atan2(flat_direction.x, flat_direction.z) + PI # Calculate the desired rotation
+	else:
+		return 0 # If no input, keep current rotation
 
 func _physics_process(delta):
 	
@@ -48,15 +59,15 @@ func _physics_process(delta):
 			anim_player.play("Punch", -1, 1.0, false)
 			skeleton_anim_player.play("Punch", -1, 1.0, 0.0) 
 		
+		if anim_player.current_animation == "Punch":
+			if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+				$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, get_input_rotation_y() + $Pivot.rotation.y, 8.0 * turn_influence * delta)
+		
 		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]: # Run
 			if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 				anim_player.play("Run", -1, 1.0, 0.0) 
 				skeleton_anim_player.play("Run", 0.1, 1.0, false)	
-				var direction = Vector3.ZERO
-				direction -= $Pivot.global_transform.basis.z * (int(Input.is_action_pressed("forward")) - int(Input.is_action_pressed("backward")))
-				direction -= $Pivot.global_transform.basis.x * (int(Input.is_action_pressed("left")) - int(Input.is_action_pressed("right")))
-				var flat_direction = Vector3(direction.x, 0, direction.z).normalized() # Reorient the mesh to face movement
-				$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, atan2(flat_direction.x, flat_direction.z) + PI, 8.0 * delta)
+				$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, get_input_rotation_y() + $Pivot.rotation.y, 8.0 * turn_influence * delta)
 		
 		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]: # Idle
 			if not (Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right")):
