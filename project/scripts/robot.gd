@@ -103,8 +103,8 @@ func take_damage(_amount: float) -> void:
 	faults_shuffled.shuffle()
 	for fault in faults_shuffled:
 		if not fault.get_node("Broken").visible:
-			human.get_node("Camera3D").shake = 2; 
-			camera.shake = 2; 
+			human.get_node("Camera3D").shake = 4; 
+			camera.shake = 3; 
 			fault.take_damage()	
 			anim_player.play("Hurt", -1, 1.0, false)
 			health -= 1;	
