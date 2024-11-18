@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://khpwg0gdmlrg"]
+[gd_scene load_steps=81 format=4 uid="uid://khpwg0gdmlrg"]
 
 [ext_resource type="PackedScene" uid="uid://ceqrl68dmbr0s" path="res://scenes/menu.tscn" id="1_c5mov"]
 [ext_resource type="Texture2D" uid="uid://be5nak2e74wok" path="res://images/sky.png" id="2_adhs1"]
@@ -402,10 +402,135 @@ tracks/8/keys = {
 "method": &"restart"
 }]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Interior/Human:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2puy8"]
+resource_name = "Intro_Exterior"
+length = 9.0
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Interior/Human/Camera3D:current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:current")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AnimationPlayer/Camera3D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.86667, 7.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(10.083, 33.736, -21.253), Vector3(10.728, 6.172, 1.972), Vector3(0, 1.54, 12.932)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimationPlayer/Camera3D:quaternion")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.86667, 7.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Quaternion(-0.09849, 0.783027, 0.552921, 0.267296), Quaternion(-0.117561, 0.854508, 0.220628, 0.455322), Quaternion(-0.131, 0, 0, 0.991)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AnimationPlayer/Camera3D:fov")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.19209e-07, 3.86667, 7.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [40.0, 50.0, 90.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AnimationPlayer/Camera3D:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Exterior/UFO")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_waves"
+}]
+}
+tracks/7/type = "animation"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Exterior/Robot/AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": PackedStringArray("Intro_Exterior"),
+"times": PackedFloat32Array(0.116667)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Fade/ColorRect:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_iheui"]
-resource_name = "Intro"
-length = 8.0
+resource_name = "Intro_Interior"
+length = 2.0
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -419,63 +544,39 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
-tracks/1/type = "value"
+tracks/1/type = "animation"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:current")
+tracks/1/path = NodePath("../Exterior/Robot/AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"clips": PackedStringArray("Intro_Interior"),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Interior/Human/Camera3D:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.86667, 7.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(10.0832, 32.7357, -21.2531), Vector3(10.7281, 5.17213, -9.02843), Vector3(0, 0, 2)]
-}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:fov")
-tracks/3/interp = 2
+tracks/3/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:current")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.86667, 7.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [40.0, 50.0, 90.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:quaternion")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 3.86667, 7.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Quaternion(-0.09849, 0.783027, 0.552921, 0.267296), Quaternion(-0.117561, 0.854508, 0.220628, 0.455322), Quaternion(0, 0, 0, 1)]
-}
-tracks/5/type = "animation"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Exterior/Robot/AnimationPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"clips": PackedStringArray("Intro"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_g540t"]
@@ -507,104 +608,93 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:position")
+tracks/2/path = NodePath("../AnimationPlayer/Camera3D:fov")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [75.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:fov")
+tracks/3/path = NodePath("../AnimationPlayer/Camera3D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [20.0]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Exterior/Robot/Pivot/SpringArm3D/Camera3D:quaternion")
+tracks/4/path = NodePath("../AnimationPlayer/Camera3D:current")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Quaternion(0.0342224, 0.960248, 0.241237, -0.136223)]
+"update": 1,
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../AnimationPlayer/Camera3D:fov")
+tracks/5/path = NodePath("../AnimationPlayer/Camera3D:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [75.0]
+"values": [Vector3(-0.290556, 0.849068, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../AnimationPlayer/Camera3D:position")
+tracks/6/path = NodePath("../Interior/Human/Camera3D:current")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../AnimationPlayer/Camera3D:current")
+tracks/7/path = NodePath("../AnimationPlayer/Camera3D:quaternion")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Quaternion(-0.131917, 0.407557, 0.0596292, 0.901632)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../AnimationPlayer/Camera3D:rotation")
+tracks/8/path = NodePath("../Interior/Human:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.290556, 0.849068, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../Interior/Human/Camera3D:current")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_esp0f"]
 _data = {
 "Defeat": SubResource("Animation_iem1w"),
-"Intro": SubResource("Animation_iheui"),
+"Intro_Exterior": SubResource("Animation_2puy8"),
+"Intro_Interior": SubResource("Animation_iheui"),
 "RESET": SubResource("Animation_g540t")
 }
 
@@ -684,9 +774,10 @@ shape = SubResource("BoxShape3D_qps58")
 transform = Transform3D(-5.78711e-10, -0.20869, 0.0132394, -9.12213e-09, 0.0132394, 0.20869, -0.20911, -4.42807e-23, -9.14047e-09, -0.0739284, 0.59798, 0.0724014)
 modulate = Color(0.98, 0.732223, 0.6174, 1)
 outline_modulate = Color(0.82, 0.82, 0.82, 0)
-text = "SYSTEM FAILURE
-OPERATION TIME-
-THREATS NEUTRALIZED-
+text = "WARNING INTERNAL
+ DAMAGE DETECTED.
+ REPAIR HULL 
+BEFORE PILOTING MECH
 "
 font = ExtResource("9_ceqto")
 uppercase = true
@@ -784,13 +875,13 @@ light_color = Color(0.968627, 0.529412, 0.211765, 1)
 
 [node name="Broken" type="MeshInstance3D" parent="Interior/Faults/2"]
 transform = Transform3D(2.67572, -0.860327, -1.54019e-09, 0.729736, 3.15456, 1.15011e-08, -4.27168e-09, -3.76061e-08, 1, 0.0275321, -0.254566, 0.132718)
-visible = false
 layers = 2
 material_override = SubResource("StandardMaterial3D_tjfbf")
 mesh = SubResource("QuadMesh_g1tsv")
 
 [node name="Fixed" type="MeshInstance3D" parent="Interior/Faults/2"]
 transform = Transform3D(2.67572, -0.860327, -1.54019e-09, 0.729736, 3.15456, 1.15011e-08, -4.27168e-09, -3.76061e-08, 1, 0.0275321, -0.254566, 0.132718)
+visible = false
 layers = 2
 material_override = SubResource("StandardMaterial3D_kj1pt")
 mesh = SubResource("QuadMesh_g1tsv")
@@ -900,7 +991,6 @@ shape = SubResource("BoxShape3D_61bns")
 
 [node name="Broken" parent="Interior/Faults/5" instance=ExtResource("20_wm1fs")]
 transform = Transform3D(-0.417857, -0.245667, -0.87467, 0.875278, -0.366879, -0.315103, -0.243486, -0.897247, 0.368329, 0.548767, -0.788839, 2.78873)
-visible = false
 
 [node name="screw" parent="Interior/Faults/5/Broken" index="0"]
 transform = Transform3D(0.143002, -0.107958, 0.0216058, 0.00505985, 0.0418233, 0.175489, -0.109982, -0.138445, 0.036166, -0.0879154, -0.0327902, -0.211034)
@@ -908,6 +998,7 @@ layers = 2
 
 [node name="Fixed" parent="Interior/Faults/5" instance=ExtResource("20_wm1fs")]
 transform = Transform3D(0.409036, 0.0353932, 0.911833, -0.912393, 0.0323806, 0.408031, -0.015084, -0.99885, 0.0455374, 1.0112, -0.477133, 1.66232)
+visible = false
 
 [node name="screw" parent="Interior/Faults/5/Fixed" index="0"]
 layers = 2
@@ -959,7 +1050,6 @@ mesh = ExtResource("24_f5hg8")
 
 [node name="Broken" type="Node3D" parent="Interior/Faults/6"]
 transform = Transform3D(0.00436312, 0, -0.499981, 0, 0.5, 0, 0.499981, 0, 0.00436312, 0.697399, -0.764059, -0.799175)
-visible = false
 
 [node name="LongBroken" type="MeshInstance3D" parent="Interior/Faults/6/Broken"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1.5)
@@ -968,6 +1058,7 @@ mesh = ExtResource("25_h26wc")
 
 [node name="Fixed" type="Node3D" parent="Interior/Faults/6"]
 transform = Transform3D(0.0043631, 0, -0.499981, 0, 0.5, 0, 0.499981, 0, 0.0043631, 0.697399, -0.764059, -0.799175)
+visible = false
 
 [node name="Long" type="MeshInstance3D" parent="Interior/Faults/6/Fixed"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1.5)
@@ -1040,7 +1131,7 @@ mesh = ExtResource("26_pujs3")
 skeleton = NodePath("../..")
 
 [node name="Human" parent="Interior" node_paths=PackedStringArray("robot") instance=ExtResource("28_bihm0")]
-transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, 3.107, 1.69225, 0)
+transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, 3.2, 1, 0)
 robot = NodePath("../../Exterior/Robot")
 
 [node name="Drill" parent="Interior/Human/Camera3D/Items/drill" index="0"]
@@ -1105,11 +1196,14 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Robot" parent="Exterior" node_paths=PackedStringArray("human", "faults", "cinematic") instance=ExtResource("37_h1le3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.1306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
 human = NodePath("../../Interior/Human")
 faults = NodePath("../../Interior/Faults")
 footstep_sounds = Array[AudioStream]([ExtResource("38_nqbd1"), ExtResource("39_hojvp"), ExtResource("40_sijwu")])
 cinematic = NodePath("../../AnimationPlayer")
+
+[node name="BoneAttachment3D" parent="Exterior/Robot/Mesh/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.950821, 0.309366, -0.0152231, 0.0346723, 0.0574672, -0.997745, -0.307794, -0.949205, -0.0653674, 0.486235, 0.0858475, 1.18494)
 
 [node name="Plooms" type="Node3D" parent="Exterior"]
 
@@ -1139,7 +1233,8 @@ libraries = {
 script = ExtResource("42_qen0u")
 
 [node name="Camera3D" type="Camera3D" parent="AnimationPlayer"]
-transform = Transform3D(0.660683, -0.215054, 0.7192, 0, 0.958084, 0.286485, -0.750665, -0.189276, 0.63299, 0, 0, 0)
+transform = Transform3D(0.660684, -0.215054, 0.7192, -2.08616e-07, 0.958084, 0.286485, -0.750665, -0.189276, 0.63299, 0, 0, 0)
+rotation_edit_mode = 1
 
 [editable path="Interior/Facility"]
 [editable path="Interior/Control Panel/Chair"]
@@ -1152,3 +1247,5 @@ transform = Transform3D(0.660683, -0.215054, 0.7192, 0, 0.958084, 0.286485, -0.7
 [editable path="Interior/Human/Camera3D/Items/drill"]
 [editable path="Interior/Human/Camera3D/Items/hammer"]
 [editable path="Interior/Human/Camera3D/Items/blowtorch"]
+[editable path="Exterior/Robot"]
+[editable path="Exterior/Robot/Mesh"]

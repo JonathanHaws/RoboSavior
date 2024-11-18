@@ -4,7 +4,7 @@ extends Node3D
 @export var robot: Node
 @export var human : Node
 
-func _ready():
+func start_waves():
 	$Waves.play("difficulty_increase", 0.0, 1.0, false)
 	$Waves.seek(0.01, true)
 	$Spawn_Timer.connect("timeout", Callable(self, "_on_timer_timeout"))

@@ -24,6 +24,9 @@ func _input(event): # LOOK
 	if event is InputEventMouseMotion and camera.current :
 		mouse_delta += event.relative
 
+func print_camera_transform(): # For finding global position of camera for seamless transition from cutscene camera to game camera
+	print("Position:", camera.global_transform.origin, "Rotation:", camera.global_transform.basis.get_rotation_quaternion(), "FOV:", camera.fov)
+
 func get_input_rotation_y() -> float:
 	var direction = Vector3.ZERO
 	direction += Vector3.FORWARD * (int(Input.is_action_pressed("forward")) - int(Input.is_action_pressed("backward")))
@@ -45,14 +48,14 @@ func _physics_process(delta):
 			mouse_delta = Vector2.ZERO
 		
 		if Input.is_action_just_pressed("steer"):
-			if anim_player.current_animation not in ["Punch", "Intro", "Defeat"]: 
+			if anim_player.current_animation not in ["Punch", "Intro_Exterior", "Intro_Interior", "Defeat"]: 
 				if anim_player.current_animation != "Retreat":
 					anim_player.play("Retreat", -1, 1.0, false)	
 			
 		#if is_on_floor() and Input.is_action_just_pressed("jump"): 	
 			#velocity.y = jump_velocity
 			
-		if Input.is_action_just_pressed("punch") and is_on_floor() and anim_player.current_animation not in ["Intro","Steer", "Defeat", "Retreat", "Punch", "Hurt"]:
+		if Input.is_action_just_pressed("punch") and is_on_floor() and anim_player.current_animation not in ["Intro_Exterior", "Intro_Interior", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]:
 			velocity.x = 0
 			velocity.z = 0
 			anim_player.stop()
@@ -63,13 +66,13 @@ func _physics_process(delta):
 			if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 				$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, get_input_rotation_y() + $Pivot.rotation.y, 8.0 * turn_influence * delta)
 		
-		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]: # Run
+		if anim_player.current_animation not in ["Intro_Exterior", "Intro_Interior", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]: # Run
 			if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 				anim_player.play("Run", -1, 1.0, 0.0) 
 				skeleton_anim_player.play("Run", 0.1, 1.0, false)	
 				$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, get_input_rotation_y() + $Pivot.rotation.y, 8.0 * turn_influence * delta)
 		
-		if anim_player.current_animation not in ["Intro", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]: # Idle
+		if anim_player.current_animation not in ["Intro_Exterior", "Intro_Interior", "Steer", "Defeat", "Retreat", "Punch", "Hurt"]: # Idle
 			if not (Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right")):
 				if anim_player.current_animation != "Idle":
 					anim_player.play("Idle", -1, 1.0, false)
@@ -77,8 +80,8 @@ func _physics_process(delta):
 					
 	else:
 		
-		if Input.is_action_just_pressed("steer"):
-			if anim_player.current_animation not in ["Intro", "Steer", "Defeat"]:
+		if Input.is_action_just_pressed("steer") and look_influence > 0:
+			if anim_player.current_animation not in ["Intro_Exterior", "Intro_Interior", "Steer", "Defeat"]:
 				if health > 0:
 					anim_player.play("Steer", 0.0, 1.0, false)	
 					skeleton_anim_player.play("Steer", 0.0, 1.0, false)	

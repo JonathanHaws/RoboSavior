@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://2cu5rpqxgg0c"]
+[gd_scene load_steps=28 format=3 uid="uid://2cu5rpqxgg0c"]
 
 [ext_resource type="Script" path="res://scripts/robot.gd" id="1_ytje0"]
 [ext_resource type="PackedScene" uid="uid://dvbnm14rsi0xr" path="res://scenes/bullet.tscn" id="2_r0uyo"]
@@ -85,8 +85,8 @@ resource_name = "Idle"
 length = 1.01667
 step = 0.0166667
 
-[sub_resource type="Animation" id="Animation_2v1bb"]
-resource_name = "Intro"
+[sub_resource type="Animation" id="Animation_prid0"]
+resource_name = "Intro_Exterior"
 length = 8.0
 step = 0.0166667
 tracks/0/type = "animation"
@@ -142,10 +142,75 @@ tracks/4/path = NodePath(".:look_influence")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(7.16667, 7.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 7.16667, 7.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [0.0, 0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/SpringArm3D/Camera3D:fov")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [90.0]
+}
+
+[sub_resource type="Animation" id="Animation_2v1bb"]
+resource_name = "Intro_Interior"
+length = 0.2
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExteriorMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteriorAmbience:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InteriorMusic:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:look_influence")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_8sinl"]
@@ -232,7 +297,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-80.0]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -244,7 +309,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-80.0]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -256,7 +321,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [-80.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -273,26 +338,26 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".:mouse_influence")
+tracks/6/path = NodePath(".:turn_influence")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath(".:turn_influence")
+tracks/7/path = NodePath(".:look_influence")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_gikwn"]
@@ -508,7 +573,8 @@ _data = {
 "Defeat": SubResource("Animation_c3ymu"),
 "Hurt": SubResource("Animation_1mhqc"),
 "Idle": SubResource("Animation_v3ec3"),
-"Intro": SubResource("Animation_2v1bb"),
+"Intro_Exterior": SubResource("Animation_prid0"),
+"Intro_Interior": SubResource("Animation_2v1bb"),
 "Punch": SubResource("Animation_8sinl"),
 "RESET": SubResource("Animation_ulvix"),
 "Retreat": SubResource("Animation_gikwn"),
@@ -563,20 +629,19 @@ bus = &"SFX"
 [node name="ExteriorMusic" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("5_rttsu")
+volume_db = -80.0
 autoplay = true
 bus = &"Music"
 
 [node name="InteriorAmbience" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("6_hiuj7")
-volume_db = -80.0
 autoplay = true
 bus = &"SFX"
 
 [node name="InteriorMusic" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("7_y34kg")
-volume_db = -80.0
 autoplay = true
 bus = &"Music"
 
@@ -594,7 +659,7 @@ bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.000422131, 1, 0.000319824, -1, 0.000422127, 9.05286e-06, 8.91785e-06, -0.000319828, 1, 0.315789, 1.01373, 0.000674709)
+transform = Transform3D(-0.995219, 0.0943009, -0.0254106, -0.0939164, -0.995453, -0.0159271, -0.026797, -0.0134645, 0.99955, 0.213341, 0.867948, 0.0174159)
 bone_name = "arm_l"
 bone_idx = 6
 

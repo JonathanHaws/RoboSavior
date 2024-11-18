@@ -19,6 +19,7 @@ var was_on_floor = true
 
 func _ready():
 	initial_camera_y = camera.transform.origin.y
+	footstep_timer = footstep_interval
 
 func _input(event): # LOOK
 	if event is InputEventMouseMotion and camera.current:
