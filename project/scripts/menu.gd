@@ -1,5 +1,5 @@
 
-# Make sure process mode for this script is always so when game pauses it doesnt pause aswell
+# Make sure process mode for this script is 'always' so when game pauses it doesnt pause aswell
 extends CanvasLayer
 @export var main_menu: Control
 @export var options_menu: Control
@@ -9,30 +9,6 @@ extends CanvasLayer
 @export var pressed_sound_player: AudioStreamPlayer2D
 @export var hover_sound: AudioStream
 @export var pressed_sound: AudioStream
-
-func _ready() -> void:
-	load_settings()
-	resume()
-	main_menu.get_node("Resume").connect("pressed", Callable(self, "resume"))
-	main_menu.get_node("Restart").connect("pressed", Callable(self, "restart"))
-	main_menu.get_node("Options").connect("pressed", Callable(self, "options"))
-	main_menu.get_node("Controls").connect("pressed", Callable(self, "controls"))
-	main_menu.get_node("Credits").connect("pressed", Callable(self, "credits"))
-	main_menu.get_node("Quit").connect("pressed", Callable(self, "quit"))  # Add this line
-	options_menu.get_node("Back").connect("pressed", Callable(self, "options_back"))
-	controls_menu.get_node("Back").connect("pressed", Callable(self, "controls_back"))
-	credits_menu.get_node("Back").connect("pressed", Callable(self, "credits_back"))
-	options_menu.get_node("Sfx/Slider").connect("value_changed", Callable(self, "sfx_changed"))
-	options_menu.get_node("Music/Slider").connect("value_changed", Callable(self, "music_changed"))
-	options_menu.get_node("Master/Slider").connect("value_changed", Callable(self, "master_changed"))
-	options_menu.get_node("Display").connect("item_selected", Callable(self, "window_mode_changed"))
-
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("menu"):
-		if self.visible:
-			resume()	
-		else :
-			pause()
 func resume() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	self.visible = false
@@ -109,3 +85,43 @@ func load_settings() -> void:
 		music_changed(music_volume)
 		options_menu.get_node("Master/Slider").value = master_volume
 		master_changed(master_volume)
+func play_hover_sound() -> void:
+	$AudioStreamPlayer2D.stream = hover_sound; 
+	$AudioStreamPlayer2D.play()
+func play_pressed_sound() -> void:
+	$AudioStreamPlayer2D.stream = pressed_sound; 
+	$AudioStreamPlayer2D.play()
+
+func _ready() -> void:
+	load_settings()
+	resume()
+	main_menu.get_node("Resume").connect("pressed", Callable(self, "resume"))
+	main_menu.get_node("Restart").connect("pressed", Callable(self, "restart"))
+	main_menu.get_node("Options").connect("pressed", Callable(self, "options"))
+	main_menu.get_node("Controls").connect("pressed", Callable(self, "controls"))
+	main_menu.get_node("Credits").connect("pressed", Callable(self, "credits"))
+	main_menu.get_node("Quit").connect("pressed", Callable(self, "quit"))  # Add this line
+	options_menu.get_node("Back").connect("pressed", Callable(self, "options_back"))
+	controls_menu.get_node("Back").connect("pressed", Callable(self, "controls_back"))
+	credits_menu.get_node("Back").connect("pressed", Callable(self, "credits_back"))
+	options_menu.get_node("Sfx/Slider").connect("value_changed", Callable(self, "sfx_changed"))
+	options_menu.get_node("Music/Slider").connect("value_changed", Callable(self, "music_changed"))
+	options_menu.get_node("Master/Slider").connect("value_changed", Callable(self, "master_changed"))
+	options_menu.get_node("Display").connect("item_selected", Callable(self, "window_mode_changed"))
+	
+	# Recursively connect buttons for audio
+	var all_nodes = get_children(); while all_nodes.size() > 0:
+		var current_node = all_nodes.pop_back()
+		if current_node is Button:
+			current_node.connect("mouse_entered", Callable(self, "play_hover_sound"))
+			current_node.connect("pressed", Callable(self, "play_pressed_sound"))
+		all_nodes += current_node.get_children()
+		
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("menu"):
+		if self.visible:
+			play_pressed_sound()
+			resume()	
+		else :
+			play_pressed_sound()
+			pause()
