@@ -14,4 +14,4 @@ func _process(delta: float) -> void:
 	var hours = total_seconds / 3600.0  # Use float division
 	var minutes = (total_seconds % 3600) / 60.0  # Use float division
 	var seconds = total_seconds % 60  # No division needed for seconds
-	label_3d.text = "%02d:%02d:%02d" % [int(hours), int(minutes), seconds]
+	label_3d.text = "Time: %02d:%02d:%02d\nBats Killed: %d\nScorpions Killed: %d" % [int(hours), int(minutes), int(seconds), robot.bats_killed, robot.scorpions_killed]

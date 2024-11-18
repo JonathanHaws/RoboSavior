@@ -68,6 +68,7 @@ func _physics_process(delta):
 				jump_audio.stream = jump_sound
 				jump_audio.global_transform = global_transform
 				add_child(jump_audio)
+				jump_audio.bus = "SFX" 
 				jump_audio.play()
 				jump_audio.connect("finished", Callable(jump_audio, "queue_free"))
 
@@ -82,7 +83,7 @@ func play_footstep():
 			footstep_audio.global_transform = global_transform  
 			footstep_audio.pitch_scale = randf_range(0.9, 1.1)
 			add_child(footstep_audio)
-			footstep_audio.play()
 			footstep_audio.bus = "SFX" 
+			footstep_audio.play()
 			footstep_audio.connect("finished", Callable(footstep_audio, "queue_free"))
 			footstep_timer = footstep_interval

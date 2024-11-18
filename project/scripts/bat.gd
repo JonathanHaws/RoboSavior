@@ -65,6 +65,7 @@ func take_damage(amount: float) -> void:
 	get_tree().current_scene.add_child(hurt_particles_instance) 
 	
 	if health <= 0: 
+		robot.bats_killed += 1
 		var death_particles_instance = death_particles.instantiate()
 		death_particles_instance.global_transform = $Particles.global_transform
 		get_tree().current_scene.add_child(death_particles_instance) 

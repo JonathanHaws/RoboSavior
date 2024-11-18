@@ -14,8 +14,10 @@ extends CharacterBody3D
 @onready var anim_player = $AnimationPlayer
 @onready var skeleton_anim_player = $Mesh/AnimationPlayer
 @onready var attack = $Mesh/Armature/Skeleton3D/BoneAttachment3D/Area3D
+@onready var bats_killed = 0
+@onready var scorpions_killed = 0
 var mouse_delta = Vector2.ZERO # Only update oretientation in physics process so spring arm can collide correctly
-var health = 3;
+var health = 0;
 
 func _ready():
 	attack.connect("area_entered", Callable(self, "_on_attack_entered"))

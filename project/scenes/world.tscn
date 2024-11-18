@@ -1202,8 +1202,17 @@ faults = NodePath("../../Interior/Faults")
 footstep_sounds = Array[AudioStream]([ExtResource("38_nqbd1"), ExtResource("39_hojvp"), ExtResource("40_sijwu")])
 cinematic = NodePath("../../AnimationPlayer")
 
+[node name="Skeleton3D" parent="Exterior/Robot/Mesh/Armature" index="0"]
+bones/1/rotation = Quaternion(-1.15202e-07, 0.707107, 0.707107, 5.33851e-08)
+bones/3/rotation = Quaternion(-1.82654e-07, 1.33038e-07, 0.718483, 0.695544)
+bones/5/rotation = Quaternion(-1.19796e-07, -1.93892e-07, -0.718483, 0.695544)
+bones/7/rotation = Quaternion(-0.707026, -0.00115496, -0.000584729, 0.707186)
+bones/8/rotation = Quaternion(0.0150355, -0.00113272, 0.00260257, 0.999883)
+bones/9/rotation = Quaternion(-0.707026, 0.0011548, 0.000584567, 0.707186)
+bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
+
 [node name="BoneAttachment3D" parent="Exterior/Robot/Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.950821, 0.309366, -0.0152231, 0.0346723, 0.0574672, -0.997745, -0.307794, -0.949205, -0.0653674, 0.486235, 0.0858475, 1.18494)
+transform = Transform3D(0.000422131, 1, 0.000319824, -1, 0.000422127, 9.05286e-06, 8.91785e-06, -0.000319828, 1, 0.315789, 1.01373, 0.000674709)
 
 [node name="Plooms" type="Node3D" parent="Exterior"]
 
