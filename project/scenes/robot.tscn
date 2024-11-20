@@ -64,6 +64,18 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.0166667, 0.333333, 1.36667)
 }
 tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1mhqc"]
 resource_name = "Hurt"
@@ -358,6 +370,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CollisionShape3D:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_gikwn"]
@@ -659,7 +683,7 @@ bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.000422131, 1, 0.000319824, -1, 0.000422127, 9.05286e-06, 8.91785e-06, -0.000319828, 1, 0.315789, 1.01373, 0.000674709)
+transform = Transform3D(-0.950821, 0.309366, -0.0152231, 0.0346723, 0.0574672, -0.997745, -0.307794, -0.949205, -0.0653674, 0.486235, 0.0858475, 1.18494)
 bone_name = "arm_l"
 bone_idx = 6
 

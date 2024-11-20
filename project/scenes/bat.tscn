@@ -92,6 +92,8 @@ radius = 0.29
 
 [node name="Bat" type="CharacterBody3D"]
 disable_mode = 1
+collision_layer = 2
+collision_mask = 3
 platform_on_leave = 2
 script = ExtResource("1_116uj")
 hurt_particles = ExtResource("3_dtn0b")
