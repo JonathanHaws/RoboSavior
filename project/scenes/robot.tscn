@@ -683,7 +683,7 @@ bones/10/rotation = Quaternion(0.0150355, 0.00113272, -0.00260258, 0.999883)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.950821, 0.309366, -0.0152231, 0.0346723, 0.0574672, -0.997745, -0.307794, -0.949205, -0.0653674, 0.486235, 0.0858475, 1.18494)
+transform = Transform3D(0.000422131, 1, 0.000319824, -1, 0.000422127, 9.05286e-06, 8.91785e-06, -0.000319828, 1, 0.315789, 1.01373, 0.000674709)
 bone_name = "arm_l"
 bone_idx = 6
 
